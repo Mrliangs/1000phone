@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload=function(){
+				var inf=getid('inf');
+				ajax('get','api/index.php','',function(str){
+					inf.innerHTML=str;
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div id="inf"></div>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			h2{
+				font-size: 30px;
+				font-weight: 700;
+				color: orangered;
+			}
+			#box{
+				width: 0;
+				height: 6px;
+				background: #FF4500;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>加载进度条</h2>
+		<div id="box">
+		</div>
+		<span id="ss">
+		</span>
+		<script type="text/javascript">
+			var owidth=0;
+			var box=document.getElementById('box');
+			var ss=document.getElementById('ss');
+			var windowWidth=document.documentElement.clientWidth;
+			console.log(windowWidth);
+			
+			var timer=setInterval(function(){
+				owidth+=7;
+				if(owidth>=windowWidth){
+					owidth=windowWidth;
+					clearInterval(timer);
+				}
+				
+				var sunNum=(owidth/windowWidth*100).toFixed(2)+'%';
+				ss.innerHTML=sunNum;
+				box.style.width=owidth+'px';
+			},100);
+		</script>
+	</body>
+</html>

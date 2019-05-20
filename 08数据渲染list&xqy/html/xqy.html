@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>详情页</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+        	height: 1200px;;
+        }
+        ul,li{
+        	list-style: none;
+        }
+        #aa{
+            width: 100%;
+            height: 150px;
+            background: green;
+            background: url(../img/wewe.jpg) no-repeat center center;
+        }
+        #bb{
+            width: 100%;
+            height: 100px;
+  			box-shadow: 0  0  0 0 rgba(0,0,0,0.9);
+  			border-bottom: 1px solid #3C3C3C;
+  			z-index:999999;
+  			background: #888888;
+        }
+        #bb ul{
+        	width: 100%;
+        	text-align: center;
+            height: 100px;margin: 0  200px;
+        }
+        #bb ul li{
+        	float: left;
+        	padding:0 85px;
+        	color: red;
+        	height: 100px;
+        	text-align: center;
+        	line-height: 100px;
+        	
+        }
+        .now{
+            position:fixed;
+            top: 0;
+            left: 0;
+        }
+        #page{
+            width: 100%;
+            height: 565px;
+            margin-top: 100px;
+            z-index: 100;
+        }
+        .commonality{
+            width: 1000px;
+            height: 100%;
+            /*border-left:1px solid #ccc;*/
+            border:1px solid #ccc;
+            /* background: pink; */
+            margin: auto;
+        }
+        #page .page_left{
+            float: left;
+            width: 420px;
+            height:100%;
+            /* background: palegreen; */
+            position: relative;
+            z-index: -1000;
+        }
+        #page .page_left .page_leftImg{
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            margin-left: 20px;
+            left: 0;
+            right: 0;
+            top: 20px;
+            z-index: -1000;
+        }
+        #page .page_left #page_left_bottom{
+            height: 50px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 440px;
+        }
+        #page .page_left #page_left_bottom li{
+            width:50px;
+            height: 50px;
+            float: left;
+            list-style: none;
+            margin-left: 20px;
+            /* background:lightgreen; */
+        }
+        #page .page_left #page_left_bottom li img{
+            width:50px;
+            height: 50px;
+        }
+
+
+
+        #page .page_center{
+            float: left;
+            width: 520px;
+            height:100%;
+            /* background: paleturquoise; */
+        }
+        #page .page_center .page_center_top{
+            width: 483px;
+            height: 50px;
+            padding-top:10px;
+            margin: 20px 20px 0 20px;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 21px;
+            color: #3C3C3C;
+        }
+        #page .page_center .page_center_price{
+            width: 482px;
+            height: 100%;
+            margin: 0 20px;
+           
+        }
+        #page .page_center .page_center_price li{
+            height: 30px;
+            line-height: 30px;
+            padding-left: 20px;
+            list-style: none;
+            font-size: 12px;
+        }
+        #page .page_center .page_center_price li:nth-child(1), li:nth-child(2){
+            background: navajowhite;
+        }
+ 
+        
+        #page .page_center .page_center_price li:nth-child(1) span:nth-child(2){
+              background: navajowhite;
+            margin-left: 30px;
+            font-size: 18px;
+        }
+        #page .page_center .page_center_price li:nth-child(1) span:nth-child(3){
+            font-size: 18px;
+            text-decoration: line-through;
+        }
+        #page .page_center .page_center_price li:nth-child(2) span:nth-child(2){
+            margin-left: 15px;
+            font-size: 25px;
+            color: orangered;
+        }
+        #page .page_center .page_center_price li:nth-child(2) span:nth-child(3){
+            height: 20px;
+            line-height: 20px;
+            background: orange;
+            margin-bottom: 30px;
+        }
+       
+        #page .page_center .page_center_price li:nth-child(3),.page_center_price li:nth-child(4){
+            padding-top: 10px;
+        
+            line-height: 30px;
+            background: rgb(240, 226, 201);
+        }
+        
+        #page .page_center .page_center_price li:nth-child(3) img{
+            width: 60px;
+            height: 18px;
+            line-height: 30px;
+            margin-left: 35px;
+        }
+        #page .page_center .page_center_price li:nth-child(4) img{
+            width: 60px;
+            height: 18px;
+            line-height: 30px;
+            margin-left: 58px;
+        }
+        #page .page_center .page_center_price li:nth-child(3) span:nth-child(2){
+            width: 60px;
+            height: 16px;
+            display: inline-block;
+        }
+        #page .page_center .page_center_price li:nth-child(3) span:nth-child(3){
+            margin-left: 40px;
+        }
+        #page .page_center .page_center_price li:nth-child(3) span:nth-child(4){
+            margin-left: 10px;
+            color: orange;
+            border-bottom: 1px orange dashed;
+            cursor: pointer;
+        }
+        #page .page_center .page_center_price li:nth-child(4) span:nth-child(3){
+            margin-left: 5px;
+        }
+        #page .page_center .page_center_price li:nth-child(4) span:nth-child(4){
+            margin-left: 10px;
+            color: orange;
+            border-bottom: 1px orange dashed;
+            cursor: pointer;
+        }
+
+        #page .page_center .page_center_price li:nth-child(5) span:nth-child(1){
+            margin-right: 35px;
+        }
+        #page .page_center .page_center_price li:nth-child(5) select{
+            border: none;
+            
+        }
+        #page .page_center .page_center_price li:nth-child(5) select:hover{
+            border: 1px solid orange;
+        }
+        #page .page_center .page_center_price li:nth-child(6) span:nth-child(2){
+            margin-left: 30px;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            line-height: 30px;
+            text-align: center;
+        }
+        #page .page_center .page_center_price li:nth-child(6) span:nth-child(3){
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            line-height: 30px;
+            text-align: center;
+        }
+        #page .page_center .page_center_price li:nth-child(7){
+            margin-top: 10px;
+        }
+        #page .page_center .page_center_price li:nth-child(7) span:nth-child(2){
+            margin-left: 30px;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            line-height: 30px;
+            text-align: center;
+        }
+        #page .page_center .page_center_price li:nth-child(7) span img{
+            width: 30px;
+            height: 30px;
+        }
+        #page .page_center .page_center_price li:nth-child(7) span:nth-child(3){
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            line-height: 30px;
+            text-align: center;
+        }
+        #page .page_center .page_center_price li:nth-child(8){
+            margin-top: 10px;
+        }
+        #page .page_center .page_center_price li:nth-child(8) input{
+            margin-left: 30px;
+        }
+        #page .page_center .page_center_price li:nth-child(9){
+            margin-top: 60px;
+        }
+        #page .page_center .page_center_price li:nth-child(9) div{
+         
+            margin-left: 30px;
+            height: 60px; 
+            float: left;
+            border-radius: 5px;
+            background: orange;
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+            line-height: 60px;
+        }
+        #page .page_center .page_center_price li:nth-child(9) div:nth-child(1){
+            width: 160px;
+            background: orange;
+        }
+        #page .page_center .page_center_price li:nth-child(9) div:nth-child(2){
+            width: 180px;
+            background: orangered;
+        }
+        #page .page_center .page_center_price li:nth-child(9)
+
+
+      
+
+
+
+        /*#page .page_right{
+            float: left;
+            width: 202px;
+            height:100%;
+            background: palevioletred;
+        }*/
+    
+    
+    
+    </style>
+    <script>
+    window.onload = function() {
+				var cc = decodeURI(location.search).slice(1);
+
+				function strToObj(str) {
+					var json = {};
+					var arr1 = str.split('&');
+					for(var i = 0; i < arr1.length; i++) {
+						var arr2 = arr1[i].split('=');
+						json[arr2[0]] = arr2[1];
+					}
+					return json;
+				}
+				var good = strToObj(cc);
+//				console.log(good);
+
+				var html = ` <section class="commonality" id="${good.id}">
+            <div class="page_left">
+                <img class="page_leftImg" src="${good.scr}" alt="">
+                <ul id="page_left_bottom">
+                    <li><img src="${good.scr}" alt=""></li>
+                    <li><img src="${good.scr}" alt=""></li>
+                    <li><img src="${good.scr}" alt=""></li>
+                    <li><img src="${good.scr}" alt=""></li>
+                    <li><img src="${good.scr}" alt=""></li>
+                    <li><img src="${good.scr}" alt=""></li>
+                </ul>
+                
+            </div>
+
+            <div class="page_center">
+                <h3 class="page_center_top">${good.title}</h3>
+                <ul class="page_center_price">
+                    <li> <span>价格</span> <span>￥</span> <span>${good.del}</span></li>
+                    <li> <span>淘宝价</span> <span>${good.price}</span> <span>新品上市</span></li>
+                    <li><span>优惠</span><span><img src="https://img.alicdn.com/tps/TB1HZofNpXXXXacXpXXXXXXXXXX-155-32.png" alt=""></span>
+                        <span>80元店铺优惠券，满1000元可用</span><span>领取</span>
+                    </li>
+                    <li><span></span><span><img src="https://img.alicdn.com/tps/TB1HZofNpXXXXacXpXXXXXXXXXX-155-32.png" alt=""></span>
+                        <span>80元店铺优惠券，满1000元可用</span><span>领取</span>
+                    </li>
+                    <li> <span>配送</span><span>广东广州</span>&nbsp;&nbsp; 至 &nbsp;&nbsp; 
+                         <select name="carlist" form="carform">
+                                <option value="广州">广州</option>
+                                <option value="深圳">深圳</option>
+                                <option value="上海">上海</option>
+                                <option value="南宁">南宁</option>
+                             </select>
+                             <select name="carlist" form="carform">
+                                    <option value="快递免运费">快递免运费</option>
+                                 </select>
+                    </li>
+
+                        <li> <span>尺码</span> <span>S</span> <span>M</span></li>
+                        <li> <span>颜色</span> 
+                            <span><img src="${good.scr}" alt=""></span>  
+                            <span><img src="${good.scr}" alt=""></span> 
+                            <span><img src="${good.scr}" alt=""></span> 
+                            <span><img src="${good.scr}" alt=""></span> 
+                            <span><img src="${good.scr}" alt=""></span> 
+                            <span><img src="${good.scr}" alt=""></span> 
+                           
+                        </li>
+
+                        <li>
+                            <span>数量</span>
+                            <input type="number" min="1" value="0">
+                        </li>
+                        <li>
+                            <div>立即购买</div><div>加入购物车</div>
+                        </li>              
+                    </ul>        
+            </div>
+            <div class="page_right"></div>
+        </section>`;
+
+				var gooddd = document.getElementById('page');
+				gooddd.innerHTML = html;
+				
+				//极顶菜单
+				var bb=document.getElementById('bb');
+            var top=bb.offsetTop;
+            console.log(top);
+            window.onscroll=function(){
+                var scrollTop=scrollY;
+                if(scrollTop>=top){
+                    bb.className='now';
+                }else{
+                    bb.className='';
+                }
+            }
+			}
+    </script>
+</head>
+<body>
+	 <div id="aa"></div>
+    <div id="bb">
+    	<ul>
+    		<li>蓝色倾情旗舰店</li>
+    		<li>商品详情</li>
+    		<li>累计评价 111</li>
+    		<li>加入购物车</li>
+    	</ul>
+    </div>
+    <section id="page">
+        <section class="commonality">
+            <!--<div class="page_left">
+                <img class="page_leftImg" src="https://gd4.alicdn.com/imgextra/i1/888799591/O1CN01RhPpzJ2Kij9ASUCb6_!!888799591.jpg_400x400.jpg" alt="">
+                <ul id="page_left_bottom">
+                    <li><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></li>
+                    <li><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></li>
+                    <li><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></li>
+                    <li><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></li>
+                    <li><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></li>
+                    <li><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></li>
+                </ul>
+                
+            </div>
+
+            <div class="page_center">
+                <h3 class="page_center_top">2018冬季新款羊剪绒大衣女中长款复合皮毛一体羊毛皮草外套加厚</h3>
+                <ul class="page_center_price">
+                    <li> <span>价格</span> <span>￥</span> <span>1980.00</span></li>
+                    <li> <span>淘宝价</span> <span>￥980.00</span> <span>新品上市</span></li>
+                    <li><span>优惠</span><span><img src="https://img.alicdn.com/tps/TB1HZofNpXXXXacXpXXXXXXXXXX-155-32.png" alt=""></span>
+                        <span>80元店铺优惠券，满1000元可用</span><span>领取</span>
+                    </li>
+                    <li><span></span><span><img src="https://img.alicdn.com/tps/TB1HZofNpXXXXacXpXXXXXXXXXX-155-32.png" alt=""></span>
+                        <span>80元店铺优惠券，满1000元可用</span><span>领取</span>
+                    </li>
+                    <li> <span>配送</span><span>广东广州</span>&nbsp;&nbsp; 至 &nbsp;&nbsp; 
+                         <select name="carlist" form="carform">
+                                <option value="广州">广州</option>
+                                <option value="深圳">深圳</option>
+                                <option value="上海">上海</option>
+                                <option value="南宁">南宁</option>
+                             </select>
+                             <select name="carlist" form="carform">
+                                    <option value="快递免运费">快递免运费</option>
+                                 </select>
+                    </li>
+
+                        <li> <span>尺码</span> <span>S</span> <span>M</span></li>
+                        <li> <span>颜色</span> 
+                            <span><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></span>  
+                            <span><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></span>
+                            <span><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></span> 
+                            <span><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></span> 
+                            <span><img src="https://img.alicdn.com/imgextra/i2/3312550097/O1CN011CaSt3X8l5boXHb_!!3312550097.jpg_50x50.jpg_.webp" alt=""></span> 
+                        </li>
+
+                        <li>
+                            <span>数量</span>
+                            <input type="number" min="1" value="0">
+                        </li>
+                        <li>
+                            <div>立即购买</div><div>加入购物车</div>
+                        </li>              
+                    </ul>        
+            </div>
+            <div class="page_right"></div>
+        </section>-->
+    </section>
+    
+</body>
+</html>

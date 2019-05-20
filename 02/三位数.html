@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = prompt("请输入一个三位数");
+			var c = parseInt(Number(a)/100);
+			var b = parseInt((a-c*100)/10);
+			var d = parseInt(a-c*100-b*10);
+			if(a<100||a>1000){
+				alert('请输入的数值为三位数');
+			}else{
+				alert('百位为'+ c  + '    十位为' + b + '    个位为' + d );
+			}
+		</script>
+	</body>
+</html>

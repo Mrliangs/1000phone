@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>输入两个数，求两个数的最小公倍数 如: 9和6的最小公倍数是18</title>
+		<style type="text/css">
+			fieldset {
+				width: 500px;
+				height: 60px;
+				margin: 0 auto;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				/*
+            输入两个数，求两个数的最小公倍数
+            1)先找出两个数中的最大数
+            2)最大数不断递增，找出能整除两个数的数，然后退出循环
+
+            如: 9和6的最小公倍数是18
+         */
+				var tex1 = document.getElementById('tex1'); //第一个数字
+				var tex2 = document.getElementById('tex2'); //第二个数字
+				var btn = document.getElementById('btn');
+				var aa = document.getElementById('aa');
+				btn.onclick = function() {
+					var val1 = tex1.value.trim();
+					var val2 = tex2.value.trim();
+
+					if(isNaN(val1) || isNaN(val2)) {
+						//							alert('请重新输入数字');
+						//							console.log(aa)
+					} else {
+						//都是数字。
+						var max = val1 > val2 ? val1 : val2;
+						for(var i = max; i >= 1; i++) {
+							if(i % val1 === 0 && i % val2 === 0) {
+								aa.value = i;
+								break;
+
+							}
+						}
+
+						}
+					}
+				}
+//									document.getElementsByName( "a ")[0].value = sum;
+					
+				
+		</script>
+	</head>
+
+	<body>
+		<fieldset id="">
+			<legend>输入两个数，求两个数的最小公倍数 如: 9和6的最小公倍数是18 </legend>
+			<input type="text" name="tex1" id="tex1" value="" placeholder="第一个数字" />
+			<input type="text" name="tex2" id="tex2" value="" placeholder="第二个数字" />
+			<input type="button" name="btn" id="btn" value="计算结果" />
+			<input type="text" name="aa" id="aa" value="" placeholder="结果是" />
+		</fieldset>
+
+	</body>
+
+</html>

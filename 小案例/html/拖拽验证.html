@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			.aa {
+				position: absolute;
+				top: 33px;
+				left: 440px;
+			}
+			
+			#box {
+				width: 300px;
+				height: 50px;
+				background: #d8d8d8;
+				position: relative;
+				margin: 20px auto;
+				border-radius: 3px;
+				line-height: 50px;
+				text-align: center;
+			}
+			
+			#con {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 50px;
+				height: 50px;
+				background: #FFFFFF;
+				border: 1px solid #CCCCCC;
+				border-radius: 3px;
+				text-align: center;
+				animation: mmm 2s;
+			}
+			
+			.iconfont {
+				line-height: 50px;
+			}
+			
+			#box .flex_box {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 0px;
+				height: 100%;
+				background: green;
+				z-index: 9;
+				color: #FFFDEF;
+			}
+			
+			#box .pass {
+				z-index: 10000;
+				padding: 0;
+			}
+			
+			#box .textRoll {
+				background-image: linear-gradient(to right, black, black, white, black, black, white, black);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				-webkit-background-size: 200% 100%;
+				animation: mymove 3s infinite linear;
+				user-select: none;
+				-webkit-user-select: none;
+			}
+			
+			@keyframes mymove {
+				from {
+					background-position: 0 0;
+				}
+				to {
+					background-position: -100% 0;
+				}
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+
+				//创建节点
+				var box = document.getElementById('box');
+				var con = document.getElementById('con');
+				var iconfont = document.querySelector('.iconfont');
+				var acc = document.querySelector('#acc');
+				console.log(acc);
+				var span = document.getElementsByTagName('span')[1];
+				var flex = document.getElementsByClassName('flex_box')[0];
+				var isok1 = false;
+				//三大点击事件
+
+				con.onmousedown = function(ev) {
+					var disX = ev.offsetX;
+
+					document.onmousemove = function(ev) {
+						var left = ev.clientX - disX - box.offsetLeft;
+
+						//临界值的判断
+						var aa = box.offsetWidth - con.offsetWidth;
+						if(left <= 5) {
+							left = 0;
+						} else if(left >= aa) {
+							left = aa;
+						}
+
+						con.style.left = left + 'px';
+						flex.style.width = left + 'px';
+
+						if(left == aa) {
+							iconfont.innerHTML = "√";
+							acc.className = "pass";
+							flex.innerHTML = "验证通过";
+							isok1 = true;
+							document.onmousemove = null;
+							con.onmousedown = null;
+							//							 ev.preventDefault();
+
+						} else {
+							//							acc.className='';
+							flex.innerHTML = " ";
+						}
+						ev.preventDefault();
+					}
+					document.onmouseup = function() {
+						if(isok1) {
+							return;
+						} else {
+							con.style.left = 0;
+							flex.style.width = 0;
+						}
+						document.onmousemove = null;
+						isok1 = true;
+					}
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="boxs">
+
+			<span class="aa">
+				验证：
+			</span>
+			<div id="box">
+				<div class="flex_box"></div>
+				<div id="con">
+					<i class="iconfont">&#xe631;</i>
+				</div>
+
+				<span class="textRoll" id="acc">
+         	&nbsp;&nbsp;&nbsp;按住滑块，拖动到最右边
+         </span>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

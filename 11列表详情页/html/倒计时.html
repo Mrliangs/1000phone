@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>10s真男人</title>
+		<style type="text/css">
+		
+			#box{
+				margin: 30px auto;
+				width: 400px;
+				height: 400px;
+				background:#D8D8D8;
+				position:relative;
+				background: url(../img/ni.jpg) no-repeat center center;
+			}
+			/*#dd{
+				margin: 30px auto;
+				width: 400px;
+				height: 400px;
+				position: relative;
+				background: url(../img/nn.jpg) no-repeat center center;
+			}*/
+			#time{
+				position: absolute;
+				right:25px;
+				top: 2px;
+				color:#F08080;
+			}
+			#close{
+				position: absolute;
+				right: 2px;
+				top: 4px;
+				cursor: pointer;
+				display: block;
+				width:15px;
+				height:15px;
+				background: #D8D8D8;
+				text-align: center;
+				line-height: 14px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box">
+			<span id="time">
+				5s
+			</span>
+			<span id="close">
+				x
+			</span>
+		</div>
+		<!--<div id="dd" style="display: none;">
+			<span id="time">
+				5s
+			</span>
+			<span id="close">
+				x
+			</span>
+		</div>-->
+		<script type="text/javascript">
+			//1.获取节点
+			var box=document.getElementById('box');
+			var time=document.getElementById('time');
+			var close=document.getElementById('close');
+			var dd=document.getElementById('dd');
+			
+			
+			//2. 10秒后自动关闭
+//			var tim2=setTimeout(function(){
+//				box.style.display='none';
+//				dd.style.display='block';
+//			},10000);
+			
+			//3. 10秒不断刷新
+			var num=4;
+			var tim=setInterval(function(){
+				time.innerHTML=num+'s';
+				num--;
+				if(num<0){
+					clearInterval(tim);
+					box.style.display='none';
+					dd.style.display='block';
+				}
+				
+			},1000);
+			
+			
+			//4.点击关闭
+			close.onclick=function(){
+				box.style.display='none';
+				clearInterval(tim);
+//				clearTimeout(tim2);
+			}
+		</script>
+	</body>
+</html>

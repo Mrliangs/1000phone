@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>电子时钟</title>
+		<style type="text/css">
+			body {
+				background: #000;
+				color: #fff;
+				font-size: 60px;
+				text-align: center;
+			}
+		</style>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+																					 	需求：
+																					 		* 获取系统时间：时分秒(补零)
+																					 		* 用图片取代数字
+																					 		* 显示图片
+																					*/
+
+			window.onload = function() {
+				var output = getid('output');
+
+				function gettime() {
+					var time = new Date();
+					var year = time.getFullYear();
+					var mon = time.getMonth() + 1;
+					var day = time.getDate();
+					var html2 = toDb(mon) + toDb(day);
+					var html3 = toDb(year);
+					console.log(html2.length);
+					//? 作业：先拼接年月日   2019-02-11
+					//					var str = 
+
+					//循环
+					var res3 = '';//年份
+					var num3 = 0;
+					for(var i = 0; i < html3.length; i++) {
+						res3 += `<img src="img/${html3.charAt(i)}.png"/>`;
+						num3++;
+						if(num3 % 4 == 0) {
+							res3 += '-';
+						}
+					}
+					console.log(res3);
+
+
+
+
+					var res2 = ''; //准备用于存放创建好的img标签   月 日
+					var num2 = 0;
+					for(var i = 0; i < html2.length; i++) {
+						res2 += `<img src="img/${html2.charAt(i)}.png"/>`;
+						num2++;
+						if(num2 % 2 == 0) {
+							res2 += '-';
+						}
+					}
+					console.log(res2);
+
+					var hours = time.getHours();//时
+					var min = time.getMinutes();//分
+					var sec = time.getSeconds();//秒
+					var html = toDb(hours) + toDb(min) + toDb(sec);
+					console.log(html.length); //? 142903  拼接得到的字符串
+
+					//循环
+//					console.log(html.charAt(0)); //1
+					var res = ''; //准备用于存放创建好的img标签
+					var num = 0;
+					for(var i = 0; i < html.length; i++) {
+
+						res += `<img src="img/${html.charAt(i)}.png"/>`;
+						num++;
+						if(num % 2 == 0) {
+							//加冒号
+							res += ':';
+						}
+					}
+					console.log(res); //?
+
+					//渲染
+
+					output.innerHTML = res3 + res2.slice(0, -1) + ',' + res.slice(0, -1);
+				}
+
+				gettime();
+
+				//开启定时器
+				setInterval(gettime, 1000);
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="output">
+			<!--<img src="img/1.png"/>
+			<img src="img/4.png"/>:
+			<img src="img/2.png"/>
+			<img src="img/3.png"/>:
+			<img src="img/3.png"/>
+			<img src="img/5.png"/>-->
+		</div>
+	</body>
+
+</html>

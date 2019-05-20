@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--3.分别计算出以上数组的最大值，最小值和平均值，并输出他们(最大值，最小值)的索引(下标)
+		[10,2,8,55,32,18,9,11,30,16,19,20]-->
+		<script type="text/javascript">
+			window.onload = function() {
+				var tex = document.getElementById('text1');
+				var btn1 = document.getElementById('btn1');
+				var btn2 = document.getElementById('btn2');
+				var btn3 = document.getElementById('btn3');
+				var btn4 = document.getElementById('btn4');
+				var arr = [];
+				var a = arr[0];
+				
+				btn4.onclick = function() {
+					arr.push(Number(tex.value));
+					tex.value = '';
+					tex.focus();
+					console.log(arr);
+				}
+
+			
+
+				btn2.onclick = function() {
+					for(var i = 0; i < arr.length; i++) {
+						if(arr[i] > a) {} else {
+							a = arr[i];
+						}
+					}
+					for(var j = 0; j < arr.length; j++) {
+						if(a == arr[j]) {
+							b = j;
+						}
+
+					}
+					alert('数组最小值为' + a + '最小值下标为' + b);
+				}
+				
+				
+					btn1.onclick = function() {
+					for(var i = 0; i < arr.length; i++) {
+						if(arr[i] < a) {}else{
+							a = arr[i];
+							console.log(arr[i]);
+						}
+					}
+					for(var j = 0; j < arr.length; j++) {
+						if(a == arr[j]) {
+							b = j;
+						}
+					}
+					alert('数组最大值为' + a + '最大值下标为' + b);
+//          		console.log(a);		
+				}
+
+				btn3.onclick = function() {
+					var b = 0;
+					var c=0;
+
+					for(var i = 0; i < arr.length; i++) {
+						b += arr[i];
+					}
+					 c =( b /arr.length).toFixed(3);
+					
+					document.getElementById('aa').innerHTML='平均数：'+c;
+					return c;
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<input type="text" name="text1" id="text1" value="" />
+		<input type="button" name="btn4" id="btn4" value="存储" />
+		<input type="button" name="btn1" id="btn1" value="最大值" />
+		<input type="button" name="btn2" id="btn2" value="最小值" />
+		<input type="button" name="btn3" id="btn3" value="平均值" />
+		<div id="aa">
+			
+		</div>
+	</body>
+
+</html>

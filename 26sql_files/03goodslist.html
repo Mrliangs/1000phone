@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>商品列表页</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				padding: 20px;
+			}
+			
+			#list {
+				width: 500px;
+			}
+			
+			li {
+				list-style: none;
+				border-bottom: 1px solid #000;
+				padding: 10px;
+			}
+			
+			.page {
+				padding: 20px;
+			}
+			
+			.page span {
+				display: block;
+				width: 30px;
+				height: 30px;
+				background: #d8d8d8;
+				text-align: center;
+				line-height: 30px;
+				float: left;
+				margin-right: 10px;
+				cursor: pointer;
+			}
+			
+			.page span.active {
+				background: lightcoral;
+				color: #fff;
+			}
+		</style>
+		<script src="../小案例/js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				/*
+				 	需求：商品列表页实现
+				 		* 商品列表数据从数据库得到并渲染出来
+				 		* 分页功能
+				*/
+
+				var list = getid('list');
+				var pageBtn = getid('page');
+				//1.商品列表数据从数据库得到并渲染出来
+				var ipage = 1; //第一页
+				var inum = 5; //每页5条
+				var data = 'page=' + ipage + '&num=' + inum;
+				ajax('post', 'api/03getdata.php', data, function(str) {
+					console.log(str);
+					var datalist = JSON.parse(str);
+					var arr = datalist.data;
+					var res = arr.map(function(item) {
+						return `<li id='${item.id}'>
+									<h3>${item.name}</h3>
+									<p>价格:${item.price}</p>
+								</li>`;
+					}).join('');
+
+					list.innerHTML = res;
+
+					var pages = Math.ceil(datalist.total / datalist.num); //存总页码
+					//					console.log(pages);//28 5 =6页
+					var html = '';
+					for(var i = 0; i < pages; i++) {
+						html += `<span>${i+1}</span>`;
+					}
+
+					pageBtn.innerHTML = html; //页码的生成
+					pageBtn.children[0].className = 'active';
+
+				});
+
+				pageBtn.onclick = function(ev) {
+					if(ev.target.tagName == 'SPAN') {
+						console.log(ev.target);
+						var ipage = ev.target.innerHTML;
+						var num = 5;
+						var data = 'page=' + ipage + '&num=' + num;
+						ajax('post', 'api/03getdata.php', data, function(str) {
+							var dataList = JSON.parse(str);
+							var arr = dataList.data;
+							console.log(arr);
+							var res = arr.map(function(item) {
+								return `<li id='${item.id}'>
+											<h3>${item.name}</h3>
+											<p>价格:${item.price}</p>
+										</li>`;
+							}).join('');
+
+							list.innerHTML = res;
+
+							//						pageBtn.children[2].className = 'active';
+							//点击高亮
+							for(var i = 0; i<pageBtn.children.length;i++){
+								pageBtn.children[i].className = '';
+							}
+							ev.target.className = 'active';
+
+						});
+					}
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>商品列表</h1>
+		<ul id="list">
+			<!--<li data-id="">
+				<h3>产品名称</h3>
+				<p>价格：</p>
+			</li>-->
+
+		</ul>
+		<p class="page" id="page">
+			<!--<span class="active">1</span>
+			<span>2</span>
+			<span>3</span>-->
+		</p>
+	</body>
+
+</html>

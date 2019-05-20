@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<h1>分别计算出以上数组的最大值，最小值和平均值，并输出他们(最大值，最小值)的索引(下标)
+[10,2,8,55,32,18,9,11,30,16,19,20]</h1>
+		<button onclick="myfun()">计算数组</button>
+		<div id="ss"></div>
+		<script type="text/javascript">
+			var arr = [10, 2, 8, 55, 32, 18, 9, 11, 30, 16, 19, 20];
+
+			function myfun() {
+				arr.sort(function(a, b) {
+					return a - b;
+				})
+				var min = arr[0];
+				var max = arr[arr.length - 1];
+				var a=arr.indexOf(min);
+				var b=arr.indexOf(max);
+				console.log(a,b);
+				console.log(max, min);
+				var sum=0;
+				var avg=0;
+				for(var i=0;i<arr.length;i++){
+					sum+=arr[i];
+				}
+				 avg=(sum/arr.length).toFixed(3);
+				document.getElementById('ss').innerHTML='数组[10, 2, 8, 55, 32, 18, 9, 11, 30, 16, 19, 20]的最大值：'+max+',它的索引是：'+b+';最小值：'+min+',它的索引是：'+a+';它们的平均值：'+avg+'。';
+				
+			}
+		</script>
+	</body>
+
+</html>

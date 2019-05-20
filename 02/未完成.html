@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 500px;
+				height: 600px;
+				border: 1px solid #ccc;
+				margin: 100px auto;
+			}
+			
+			p {
+				margin-left: 30px;
+			}
+			
+			div span{
+				color: #red;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div>
+			<img src="img/01苹果手机_02.png" />
+			<p>价格 <span id="">
+				￥4998元
+			</span></p>
+			<select name="" style="margin-left: 30px;" id="bb">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			 <br />
+		
+				<span id=""style="margin-left:30px;">
+					总价格 
+				</span>
+				<input type="text" name="" id="cc" value="" />
+			
+		</div>
+		<script type="text/javascript">
+			b.onclick = function () {
+				var a = 4998;
+				var b = document.getElementById('bb').value;
+				var c = document.getElementById('cc').value;
+				if(b == "1") {
+					c= a;
+					document.write(c);
+				} else if(b == "2") {
+					c.value = a * 2;
+				}else if(b == "3") {
+					c.value = a * 3;
+				}
+
+
+			}
+		</script>
+	</body>
+
+</html>

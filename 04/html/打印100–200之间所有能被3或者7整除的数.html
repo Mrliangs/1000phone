@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>打印100–200之间所有能被3或者7整除的数</title>
+	</head>
+	<style type="text/css">
+			fieldset {
+				width: 800px;
+				height: 60px;
+				margin: 0 auto;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var tex1 = document.getElementById('tex1'); //第一个数字
+				var tex2 = document.getElementById('tex2'); //第二个数字
+				var btn = document.getElementById('btn');
+				var a = document.getElementById('aa');
+				btn.onclick = function() {//点击事件
+					var val1 = tex1.value.trim();
+					var val2 = tex2.value.trim();
+					var str = ' ';
+					if(val1 && val2) {
+						//必须是数字
+						if(isNaN(val1) || isNaN(val2)) {
+							//							alert('请重新输入数字');
+							//							console.log(aa)
+							//不是数字。
+						} else {
+							//都是数字。
+							for(var i = val1; i <= val2; i++) {
+								if(i%7==0||i%3==0){
+									str += i + ',';
+//3,6,7,9,12,14,15,18,21,24,27,28,30,33,35,36,39,42,45,48,49,51,54,56,57,60,63,66,69,70,72,75,77,78,81,84,87,90,91,93,96,98,99,
+//7,12,14,15,18,21,24,27,28,30,33,35,36,39,42,45,48,49,51,54,56,57,60,63,66,69,70,72,75,77,78,81,84,87,90,91,93,96,98,99,
+								}
+							}
+							//							a.innerHTML += sum;
+							a.innerHTML = str;
+						}
+					} else {
+						alert('请输入两个数字');
+					}
+
+				}
+			}
+		</script>
+	<body>
+			<fieldset id="">
+			<legend>打印100–200之间所有能被3或者7整除的数 </legend>
+			<input type="text" name="tex1" id="tex1" value="" />
+			<input type="text" name="tex2" id="tex2" value="" />
+			<input type="button" name="btn" id="btn" value="计算结果" />
+			<div id="aa">
+
+			</div>
+		</fieldset>
+
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>有一个从小到大排序的数组[3,5,6,20,22,33,88]。现输入一个数，要求按原来的规律将它插入数组中，并打印出新的数组</title>
+	</head>
+	<body>
+		<h1>有一个从小到大排序的数组[3,5,6,20,22,33,88]。现输入一个数，要求按原来的规律将它插入数组中，并打印出新的数组</h1>
+		<input type="text" name="tex" id="tex" value="" />
+		<button onclick="aaa()">添加数字</button>
+		<div id="aa"></div>
+		<script type="text/javascript">
+//			var arr=new Array();
+			var arr=[];
+			function aaa(){
+				var tex=document.getElementById('tex').value*1;
+				arr.push(tex);
+				arr.sort(bb);
+				function bb(a,b){
+					return a-b;
+				}
+				document.getElementById('aa').innerHTML='新数组'+'['+arr+']';
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function() {
+				document.onmousemove = function() {
+					var cons = document.getElementById('cons')
+					var box = document.getElementById('box');
+					var box2 = document.getElementById('box2');
+					var box3 = document.getElementById('box3');
+					var ev = window.event || event;
+					box.innerHTML = `c的坐标是${ev.clientX}和${ev.clientY};`;
+					box2.innerHTML = `p的坐标是${ev.pageX}和${ev.pageY};`;
+					box3.innerHTML = `s的坐标是${ev.screenX}和${ev.screenY};`;
+				}
+			}
+		</script>
+	</head>
+
+	<body style="height: 2000px;">
+		<div id="cons" style="position: fixed; top: 10px; left: 10px;">
+			<div id="box"></div>
+			<div id="box2"></div>
+			<div id="box3"></div>
+		</div>
+	</body>
+
+</html>

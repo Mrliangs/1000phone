@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 200px;
+				height: 400px;
+				background: #ccc;
+				/*百度分享特效注意点  fixed*/
+				position: fixed;
+				right: -200px;
+				top: 50%;
+				transform: translateY(-50%);
+				/*transition: all 0.5s;*/
+			}
+			
+			#share {
+				position: absolute;
+				top: 50%;
+				left: -30px;
+				transform: translateY(-50%);
+				width: 30px;
+				height: 100px;
+				background: blue;
+				color: #fff;
+			}
+		</style>
+		<script src="../common.js"></script>
+		<script type="text/javascript">
+			window.onload=function(){
+				var box=getid('box');
+				
+				box.onmouseenter=function(){
+					startMove(box,{'right':0});
+				}
+				box.onmouseleave=function(){
+					startMove(box,{'right':-200});
+				}
+			}
+			
+		</script>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="share">
+				百度分享
+			</div>
+		</div>
+	</body>
+
+</html>

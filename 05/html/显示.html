@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+
+			
+			body {
+				text-align: center;
+			
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			#bb {
+				width: 400px;
+				height: 400px;
+				background: red;
+				border: 1px solid #000;
+				margin: 20px auto;
+			}
+		</style>
+		<script type="text/javascript">
+			function showHidden(a) {
+				if(a.style.display == "block") {
+					a.style.display = 'none';
+				} else {
+					a.style.display = 'block';
+				}
+				
+			}
+			window.onload = function() {
+				var aa = document.getElementById("aa");
+				var bb = document.getElementById("bb");
+				aa.onclick = function() {
+					showHidden(bb);
+					return 1;
+				
+				}
+				
+			}
+			
+		</script>
+	</head>
+
+	<body>
+		<a href="#" id="aa">点击显示/隐藏</a>
+		<div id="bb" >
+
+		</div>
+	</body>
+
+</html>

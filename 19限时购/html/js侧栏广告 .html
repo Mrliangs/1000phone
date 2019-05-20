@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>侧边栏广告效果2-</title>
+
+		<style>
+			#div1 {
+				height: 100px;
+				width: 100px;
+				background-color: red;
+				position: absolute;
+				right: 0px;
+			}
+			/**
+            通过设置div的top值 = scrolltop 的高度 + （可视化区域的高度-div自身的高度）/2 来实现 div始终位于区域中间位置
+        */
+		</style>
+		<script>
+			
+			window.onscroll = window.onload = function() {
+				var oDiv = document.getElementById("div1");
+				var scrollTop = document.documentElement.scrollTop;
+				var t = (document.documentElement.clientHeight - oDiv.offsetHeight) ;
+				oDiv.style.top = scrollTop + t + "px";
+			}
+		</script>
+	</head>
+
+	<body style="height: 2000px;">
+
+		<div id="div1">
+
+		</div>
+	</body>
+
+</html>

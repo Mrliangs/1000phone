@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>淘宝列表项</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			/*body{
+				width: 100%;
+				height: 100%;	
+			}*/
+			
+			#box {
+				width: 100%;
+				height: 100%;
+				background-color: #CCCCCC;
+			}
+			
+			.content {
+				width: 1190px;
+				height: 100%;
+				margin: 0 auto;
+				/*padding: 20px 0;*/
+				background: #888888;
+			}
+			
+			#box .wewe {
+				width: 220px;
+				float: left;
+				margin: 20px 10px 20px 8px;
+				border: 3px solid #eee;
+				background: #fff;
+			}
+			
+			#box .wewe:hover {
+				border-color: #f85300;
+			}
+			
+			#box .wewe .imgitem,
+			img {
+				width: 214px;
+				height: 218px;
+			}
+			
+			#box .wewe .info {
+				padding: 10px;
+			}
+			
+			#box .wewe .info .p1 {
+				font-size: 16px;
+				line-height: 16px;
+				overflow: hidden;
+				margin-top: 4px;
+			}
+			
+			#box .wewe .info .p1 span {
+				float: left;
+				color: #f40;
+			}
+			
+			#box .wewe .info .p1 span:hover {
+				text-decoration: underline!important;
+			}
+			
+			#box .wewe .info .p1 .a2 {
+				float: left;
+				width: 27px;
+				height: 14px;
+				color: #fff;
+				font-size: 12px;
+				margin-left: 4px;
+				text-align: center;
+				vertical-align: middle;
+				background: #f85300;
+			}
+			
+			#box .wewe .info .title {
+				width: 197px;
+				height: 34px;
+				/*overflow: hidden;*/
+				color: #000;
+				margin-top: 5px;
+				display: block;
+			}
+			
+			#box .wewe .info .title:hover {
+				text-decoration: underline!important;
+			}
+			
+			#box .wewe .info .p2 {
+				margin-top: 5px;
+				overflow: hidden;
+			}
+			
+			#box .wewe .info .p2 .shop {
+				float: left;
+				display: block;
+				overflow: hidden;
+				width: 110px;
+				white-space: nowrap;
+				color: #888;
+				text-decoration: underline;
+			}
+			
+			#box .wewe .info .p2 .pay {
+				/*float:right;*/
+				width: 68px;
+				overflow: hidden;
+				text-align: right;
+				/*white-space: nowrap;*/
+				/*display: block;*/
+				color: #888;
+				/*text-overflow: ellipsis;*/
+			}
+			
+			#box .wewe .info .bottom {
+				height: 23px;
+				margin-top: 5px;
+			}
+			
+			#box .wewe .info .bottom .icon {
+				float: left;
+			}
+			
+			#box .wewe .info .bottom .icon span {
+				background: url(../img/111.png) no-repeat;
+				font-size: 0;
+			}
+			
+			#box .wewe .info .bottom .icon .icon1 {
+				width: 16px;
+				height: 16px;
+				margin-right: 4px;
+				margin-top: 5px;
+				/*background-position: -162px -57px;*/
+				display: inline-block;
+				zoom: 1;
+			}
+			
+			#box .wewe .info .bottom .info11 {
+				display: block;
+				float: right;
+				line-height: 15px;
+				width: 105px;
+				height: 20px;
+				background-color: #fff;
+				border: 1px solid #ddd;
+				border-radius: 0 0 3px 3px;
+				margin-top: 6px;
+			}
+			
+			#box .wewe .info .bottom .info11 span {
+				display: inline-block;
+				height: 18px;
+				line-height: 15px;
+				padding: 2px 5px;
+				font-weight: 400;
+				color: gray;
+				font-size: 10px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var list = [{
+					"id": 1,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1rohVpQPoK1RjSZKbSut1IXXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+					"icon1": "background-position:-162px -57px;",
+					"b1": "如实描述:",
+					"b2": 4.7
+				}, {
+					"id": 2,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1_TV8pHrpK1RjSZTESuwWAVXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款气齐全气齐全UI恢复",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+					"icon1": "background-position:-135px -57px;", //j
+					"b1": "如实描述:",
+					"b2": 4.7
+				}, {
+					"id": 3,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1zd4xpAvoK1RjSZFNSuwxMVXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+					"icon1": "background-position:-135px -4px;",
+					"b1": "如实描述:",
+					"b2": 4.7
+				}, {
+					"id": 4,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1WdL1sxTpK1RjSZFMSuvG_VXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+					"icon1": "background-position:-162px -57px;",
+					"b1": "如实描述:",
+					"b2": 4.7
+				}, {
+					"id": 5,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1N4Z2sgHqK1RjSZFPSuwwapXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+
+					"b1": "如实描述:",
+					"b2": 4.7
+				}, {
+					"id": 6,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1t2MWnSzqK1RjSZFLSuwn2XXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+					"icon1": "background-position:-135px -57px;",
+					"b1": "如实描述:",
+					"b2": 4.7
+				}, {
+					"id": 7,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1rohVpQPoK1RjSZKbSut1IXXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+					"b1": "如实描述:",
+					"b2": 4.7
+				}, {
+					"id": 8,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1K0FUpQPoK1RjSZKbSut1IXXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+					"b1": "如实描述:",
+					"b2": 4.7
+				}, {
+					"id": 9,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1GGafpxTpK1RjSZFGSuwHqFXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+					"b1": "如实描述:",
+					"b2": 4.7
+				}, {
+					"id": 10,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1r9fRo7voK1RjSZFwSuwiCFXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+					"b1": "如实描述:",
+					"b2": 4.7
+				}, {
+					"id": 11,
+					"scr": "https://img.alicdn.com/bao/uploaded/TB1gblelmzqK1RjSZFLSuwn2XXa.jpg_440x440q50.jpg",
+					"price": "￥275.40",
+					del:"299",
+					"a2": "包邮",
+					"title": "20号新品 9.5折2018冬装新款",
+					"shop": "果果一女人",
+					"pay": "6233人付款",
+					"b1": "如实描述:",
+					"b2": 4.7
+				}];
+				//获取节点
+				var  a= document.getElementsByClassName('content'); //得到一个数组
+				//				console.log(a);
+				var weWe = document.getElementsByClassName('wewe');
+				var res = list.map(function(item) {
+					//返回长度一样的新数组
+					//将静态内容，都替换成数组里面的数据
+					return `
+					<div class="wewe" id="${item.id}">
+					
+					<div class="imgitem">
+						<img src="${item.scr}"/>
+						
+					</div>
+					<div class="info">
+						<p class="p1">
+							<span class="a1">
+								${item.price}
+							</span>
+							<span class="a2">${item.a2}</span>
+						</p>
+						<span class="title">
+							${item.title}
+						</span>
+						<p class="p2">
+							<span class="shop">${item.shop}</span>
+							<span class="pay">${item.pay}</span>
+						</p>
+						<div class="bottom">
+							<span class="icon">
+								<span class="icon1" style="${item.icon1}"></span>
+							</span>
+							<div class="info11">
+								<span class="b1">${item.b1}</span>
+								<span class="b2">${item.b2}</span>
+							</div>
+						</div>
+					</div>
+					</div>`;
+				}).join('');
+//											console.log(res);
+
+				a[0].innerHTML = res; //数据渲染
+
+				//点击商品可以跳转到详情页
+
+				for(var i = 0; i < weWe.length; i++) {
+					weWe[i].index = i;
+				
+					weWe[i].onclick = function() {
+						console.log(this.index);
+						var html = '';
+						var good = list[this.index];
+						for(var key in good) {
+							console.log(key,good[key]);
+							html += key + '=' + good[key] + '&';
+						}
+						html = html.slice(0, -1);
+						console.log(html);
+						location.href = 'xqy.html?' + html; 
+//						window.open('xqy.html?'+html);
+						
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="content">
+				<a href="">
+					<!--<div class="item">
+					<div class="imgitem">
+						<img src="https://img.alicdn.com/imgextra/i1/23454997/O1CN01VaUlWX1mmfcYgEjjr_!!0-saturn_solar.jpg_220x220.jpg_.webp" class="url" />
+					</div>
+					<div class="info">
+						<p class="p1">
+							<span class="a1">
+								￥
+								<strong>275.40
+							</span>
+							<span class="a2">包邮</span>
+						</p>
+						<span class="title" title="20号新品 9.5折2018冬装新款">
+							20号新品 9.5折2018冬装新款
+						</span>
+						<p class="p2">
+							<span class="shop">果果一女人</span>
+							<span class="pay">6233人付款</span>
+						</p>
+						<div class="bottom">
+							<span class="icon">
+								<span class="icon1"></span>
+							</span>
+							<div class="info11">
+								<span class="b1">如实描述:</span>
+								<span class="b2">4.7</span>
+							</div>
+						</div>
+					</div>
+				</div>-->
+				</a>
+			</div>
+
+		</div>
+	</body>
+
+</html>

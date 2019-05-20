@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background: #ADD8E6;
+				font-size: 14px;
+			}
+			
+			.box {
+				width: 640px;
+				height: 570px;
+				border: 1px solid #CCCCCC;
+				padding: 20px;
+				margin: 10px auto;
+				text-align: center;
+				border-radius: 3px;
+				box-shadow: 5px 7px 16px rgba(0, 0, 0, 0.2);
+				background: #FFFFFF;
+			}
+			
+			.box2 {
+				height: 25px;
+				border-bottom: 1px solid #CCCCCC;
+			}
+			
+			.box2 .fl {
+				float: left;
+			}
+			
+			.box2 .fr {
+				float: right;
+				width: 71px;
+				height: 23px;
+				background: #ADD8E6
+			}
+			
+			table {
+				margin-top: 10px;
+				text-align: center;
+			}
+			
+			table td {
+				width: 305px;
+				height: 17px;
+			}
+			
+			#text3,
+			#text4 {
+				background: bisque;
+			}
+			
+			#btn1 {
+				/*display: inline-block;*/
+				width: 90px;
+				height: 30px;
+				background: #008000;
+				margin-right: 80px;
+			}
+			
+			#onbtn {
+				width: 80px;
+				height: 30px;
+				background: red;
+			}
+			
+			.sss {
+				width: 173px;
+				height: 20px;
+				border: 1px solid #CCCCCC;
+				/*float: right;*/
+				margin-left: 65px;
+			}
+			
+			textarea {
+				resize: none;
+				height: 40px;
+				width: 190px;
+			}
+		</style>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var name = getid('name');
+				var chinese = getid('chinese');
+				var email = getid('email');
+				var psweasy = getid('psweasy')
+				var pwwagain = getid('pwwagain');
+				var btn1 = getid('btn1');
+				var onbtn = getid('onbtn');
+				var retain = getid('retain');
+				var infs = document.querySelectorAll('#inf');
+				var arr = [];
+				var val = '';
+				//				var val3='';
+				//验证用户名
+				name.onblur = function() {
+					val = name.value.trim();
+					if(val) {
+						//不为空，做正则判断
+						if(checkReg.name(val)) {
+							//验证通过
+							infs[0].innerHTML = '验证成功';
+							arr.push('1');
+						} else {
+							//验证不通过
+							infs[0].innerHTML = '验证不成功';
+						}
+
+					} else {
+						infs[0].innerHTML = '账号不能为空';
+					}
+					console.log(val);
+				}
+				//验证昵称
+				chinese.onblur = function() {
+					val1 = chinese.value.trim();
+					if(val1) {
+						//不为空，做正则判断
+						if(checkReg.chinese(val1)) {
+							//验证通过
+							infs[1].innerHTML = '验证成功';
+							arr.push('2');
+						} else {
+							//验证不通过
+							infs[1].innerHTML = '验证不成功';
+						}
+
+					} else {
+						infs[1].innerHTML = '账号不能为空';
+					}
+				}
+				//验证邮箱
+				email.onblur = function() {
+					val2 = email.value.trim();
+					if(val2) {
+						//不为空，做正则判断
+						if(checkReg.email(val2)) {
+							//验证通过
+							infs[2].innerHTML = '验证成功';
+							arr.push('3');
+						} else {
+							//验证不通过
+							infs[2].innerHTML = '验证不成功';
+						}
+
+					} else {
+						infs[2].innerHTML = '邮箱不能为空';
+					}
+				}
+				//验证密码
+				psweasy.onblur = function() {
+					val3 = psweasy.value.trim();
+					if(val3) {
+						//不为空，做正则判断
+						if(checkReg.psweasy(val3)) {
+							//验证通过
+							infs[3].innerHTML = '验证成功';
+							arr.push('4');
+						} else {
+							//验证不通过
+							infs[3].innerHTML = '验证不成功';
+						}
+
+					} else {
+						infs[3].innerHTML = '密码不能为空';
+					}
+				}
+				//验证确认密码
+				pwwagain.onblur = function() {
+					val4 = pwwagain.value.trim();
+					if(val4) {
+						//不为空，做正则判断
+						if(checkReg.pwwagain(val3, val4)) {
+							//验证通过
+							infs[4].innerHTML = '验证成功';
+							arr.push('5');
+						} else {
+							//验证不通过
+							infs[4].innerHTML = '验证不成功';
+						}
+
+					} else {
+						infs[4].innerHTML = '确认密码不能为空';
+					}
+				}
+				//上传图片
+				btn1.onclick = function() {
+
+					var flag = true;
+
+					headPhotoFile = document.getElementById("headPhotoFile");
+
+					if(headPhotoFile) {
+						if(!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(headPhotoFile)) {
+							alert("图片类型必须是gif,jpeg,jpg,png中的一种");
+							flag = false;
+						}
+					}
+					console.log(headPhotoFile);
+				}
+
+				//cookies
+				onbtn.onclick = function() {
+					if(arr.length==5) {
+						//可以注册
+						if(retain.checked) {
+							console.log('勾选了复选框');
+							var val = name.value.trim();
+							var val3 = psweasy.value.trim();
+							if(val && val3) {
+								//不为空，存数据到cookie
+								//设置成七天免登陆：获取当前系统时间，再加上7天
+								var now = new Date();
+								now.setDate(now.getDate() + 10); //未来7天
+								//存cookie
+								cookie.set('name', val, {
+									expires: now
+								});
+								cookie.set('psweasy', val3, {
+									expires: now
+								});
+							}
+
+						} else {
+							console.log('没勾选了复选框');
+						}
+
+						window.open('欢迎来到我的表单世界.html?name=' + val + '&&psweasy=' + val3);
+					} else {
+						alert('请完善以上信息');
+					}
+					console.log(arr[0], arr[3]);
+
+				}
+
+				//取cookie
+				var name1 = cookie.get('name');
+				var psweasy1 = cookie.get('psweasy');
+				name.value = name1;
+				psweasy.value = psweasy1;
+				console.log(name1, psweasy1);
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="box2">
+				<span class="fl">注册账号</span>
+				<span class="fr">反馈建议</span>
+			</div>
+			<div class="box3">
+				<table border="0" cellspacing="4" cellpadding="3">
+					<tr>
+						<td>登录账号：</td>
+						<td><input type="text" id="name" value="" placeholder="限小写字母或数字组合" />
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><span id="inf"></span> </td>
+					</tr>
+					<tr>
+						<td>你的昵称：</td>
+						<td><input type="text" id="chinese" value="" placeholder="中英文皆可" />
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><span id="inf"></span></td>
+					</tr>
+					<tr>
+						<td>电子邮件：</td>
+						<td><input type="text" id="email" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><span id="inf"></span></td>
+					</tr>
+					<tr>
+						<td>设置密码：</td>
+						<td><input type="password" name="" id="psweasy" />
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><span id="inf"></span></td>
+					</tr>
+					<tr>
+						<td>确认密码：</td>
+						<td><input type="password" name="" id="pwwagain" />
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><span id="inf"></span></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<div class="sss">强度评估</div>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>上传头像</td>
+						<td><input type="button" id="btn1" value="选择图像" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>可上传100*100像素的图片</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>个人说明：</td>
+						<td><textarea name="" rows="" cols=""></textarea>
+
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><span id="inf"></span></td>
+					</tr>
+					<tr>
+						<td>个人主页</td>
+						<td><input type="text" id="text6" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><span id="inf"></span></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="checkbox" value="" id="retain" />&nbsp;&nbsp;10天内免费登录
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" id="onbtn" name="" value="注册" /></td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+	</body>
+
+</html>

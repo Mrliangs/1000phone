@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取样式</title>
+		<style type="text/css">
+			.one{
+				width: 100px;
+				height: 100px;
+			}
+			/*#box ul li{
+				background: #ccc;
+			}
+			#box ul li.active{
+				
+			}
+			#box ul li#two{
+				
+			}
+			
+			li
+			.one
+			#vox
+			ul li
+			li,h2
+			li.one*/
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				/*
+				 	需求：获取样式
+				 		* 行内样式
+				 		* 非行内样式
+				 */
+				var box = document.getElementById('box');
+				
+				box.style.backgroundColor = 'red';//设置行内样式
+				
+				//获取行内样式
+				console.log(box.style.height);//200px
+				
+				//非行内样式
+//				console.log(box.style.backgroundColor);//style.样式名：只能获取行内样式
+				
+				/*
+				 	获取样式：行内和非行内
+				 		* 节点名.currentStyle(样式名)
+				 		* getComputedStyle(节点名, false)[样式名]  ：false不管伪元素的样式
+				 */
+				
+//				console.log(box.currentStyle.width);//IE9-
+				console.log(getComputedStyle(box, false).width);//100px
+				console.log(getComputedStyle(box, false).height);//200px
+				
+				function getstyle(obj,attr) {
+					if(getComputedStyle(obj, false)) {
+						//高级浏览器
+						return getComputedStyle(obj, false)[attr];
+					}else{
+						//低版本 IE6-9
+						return obj.currentStyle[attr];
+					}
+				}
+				
+				var iW = getstyle(box,'width');
+				console.log('宽度是:' + iW);
+//				
+//				var str = 'name=11&pws=123';
+//				box.innerHTML = 'fsfds' + str;
+				
+				//结论：只能获取非行内样式，但是不能设置非行内样式，要设置样式就设置成行内样式
+				
+//				css():设置和获取样式
+				
+				//设置：对象名/属性/属性值
+				//获取：对象名/属性
+				
+				function css() {
+					var obj = arguments[0];
+					var attr = arguments[1];
+					var value = arguments[2];
+					//arguments:系统提供的数组，能够帮你存实参
+					if(arguments.length == 2) {
+						//获取样式
+						if(getComputedStyle(obj, false)[attr]) {
+							//高级浏览器
+							return getComputedStyle(obj, false)[attr];
+						}else{
+							//低版本浏览器
+							return obj.currentStyle[attr];
+						}
+					}else if(arguments.length == 3) {
+						//设置样式：设置行内样式  box.style.backgroundColor = 'red';
+						obj.style[attr] = value;
+					}
+				}
+				
+				//函数的调用
+//				var w = css(box, 'width');//获取样式
+//				console.log('封装的函数宽度是：' + w);
+				
+				css(box,'width','90px');//设置样式
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" class="one" style="height: 200px;">
+			
+		</div>
+	</body>
+</html>

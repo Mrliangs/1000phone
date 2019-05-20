@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>封装计算平方与立方的方法</title>
+	</head>
+	<body>
+		<h1>封装计算平方与立方的方法</h1>
+		<p>请输入一个数字：</p>
+		<input type="" name="" id="aa" value="" />
+		<button onclick="myFun()">打印结果</button>
+		<script type="text/javascript">
+			function pingli(num){
+				var a=num*num;
+				var b=num*num*num;
+				alert(num+'的平方'+a);
+				alert(num+'的立方'+b);
+			}
+			function myFun(aa){
+				var aa= document.getElementById('aa');
+				var a=aa.value;
+				if(isNaN(a)){
+					alert('输入错误');
+				}else{
+					
+						 pingli(a);
+					
+				}
+				
+				
+			}
+		</script>
+	</body>
+</html>

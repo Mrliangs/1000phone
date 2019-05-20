@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var str = decodeURI(location.search.slice(1));//去掉问号 name=34343433@qq.com
+				var obj = strToObj(str);//{ name : 34343433@qq.com}
+				console.log(obj);
+				var box = document.getElementById('box');
+				var box2=document.getElementById('box2');
+				box.innerHTML = obj.name + '欢迎来到我的网站世界'+'<br>'+'你的密码是:'+obj.psweasy;
+//				box2.innerHTML=;
+console.log(box);
+//console.log(name,psweasy);+
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<div id="box2"></div>
+	</body>
+</html>

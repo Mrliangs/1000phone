@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>请随机点菜</h1>
+		<input type="text" name="aa" id="aa" value="" />
+		<button onclick="diancai()">点击选菜</button>
+		<script type="text/javascript">
+			var aa=document.getElementById('aa');
+			var arr=['烤乳猪','脆皮烧鹅','上汤焗龙虾','清蒸非洲鱼','八宝冬瓜盅','糖醋咕噜肉','老火靓汤','香滑鱼球','红烧乳鸽'];
+			function diancai(){
+				var bb=parseInt(Math.random()*arr.length);
+					aa.value=arr[bb];
+			
+			}
+		</script>
+	</body>
+</html>

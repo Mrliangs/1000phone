@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 650px;
+				height: 456px;
+				/*background-color: #ccc;*/
+				margin: 40px auto;
+			}
+			
+			ul,
+			li {
+				list-style: none;
+				margin-top: 10px;
+			}
+			
+			li:hover {
+				color: red;
+			}
+			
+			.qq1 {
+				height: 54px;
+				border-top: 1px solid #CCCCCC;
+			}
+			
+			.qq {
+				float: left;
+				width: 190px;
+				text-align: center;
+				font-size: 18px;
+				line-height: 54px;
+				/*border-top: 1px solid #fff;*/
+				box-sizing: border-box;
+			}
+			
+			.qq:hover {
+				border-top: 1px solid red;
+				color: red;
+				font-weight: 700;
+			}
+			
+			.con {
+				display: none;
+				margin-top: 20px;
+				width: 650px;
+				height: 400px;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var box = document.getElementById('box');
+				var btns = document.getElementsByClassName('qq');
+				var divs = document.getElementsByClassName('con');
+
+				for(var i = 0; i < btns.length; i++) {
+					btns[i].index = i;
+					btns[i].onmouseover = function() {
+						console.log('成功了');
+						for(var i = 0; i < btns.length; i++) {
+							divs[i].style.display = 'none';
+						}
+						//						this.style.color='red';
+						//						this.style.borderTopColor='red';
+						console.log(this.index);
+						divs[this.index].style.display = 'block';
+						//						btns[this.index].style.borderBottomColor = 'red';
+						//						btns[this.index].style.color = 'red';
+
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="box">
+			<ul class="qq1">
+				<li class="qq">体育</li>
+				<li class="qq">NBA/CBA</li>
+				<li class="qq">中超/国际</li>
+			</ul>
+
+			<div class="con" style="display: block;">
+				<ul>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+					<li>杜兰特被粉丝摘帽后转身怒喷:放尊重点 你个X养的</li>
+				</ul>
+
+			</div>
+			<div class="con">
+				<ul>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+					<li>西甲-梅西登贝莱破门苏神争议球 巴萨3-1七连胜</li>
+				</ul>
+
+			</div>
+			<div class="con">
+				<ul>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+					<li>罗斯飘逸后仰中投绝杀！末节12分CARRY全队，这表现全明星谁敢不 </li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+
+</html>

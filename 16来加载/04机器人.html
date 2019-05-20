@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=！, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<style>
+			legend {
+				text-align: center;
+			}
+			
+			ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			
+			.msg-list {
+				position: relative;
+				width: 600px;
+				margin: 0 auto;
+			}
+			
+			.msg-list ul {
+				padding: 10px;
+				min-height: 200px;
+				max-height: 400px;
+				overflow-y: auto;
+				border: 1px solid #ddd;
+			}
+			
+			.msg-list li {
+				float: left;
+				clear: both;
+				margin: 10px 0;
+				padding: 5px;
+				line-height: 2;
+				border-radius: 5px;
+				background-color: #efefef;
+			}
+			
+			.msg-list li.active {
+				float: right;
+				background-color: #58bc58;
+				color: #fff;
+			}
+			
+			.msg-list textarea {
+				display: block;
+				min-height: 50px;
+				margin: 10px 0;
+				width: 100%;
+				box-sizing: border-box;
+			}
+			
+			.status {
+				display: none;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				padding: 5px 10px;
+				text-align: center;
+				color: #999;
+			}
+		</style>
+		<script src="../common.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			window.onload = function() {
+				/*
+				      需求：自动问答机器人
+				            * 点击提交的时候：把文本域的内容渲染到ul里面
+				            * 显示：对方正在输入，显示2秒钟，隐藏起来
+				            * 根据输入的内容，输出对应回答
+				 */
+
+				var autoAnswer = document.querySelector('#autoAnswer');
+				var ul = autoAnswer.children[0]; //ul元素
+				var tex = autoAnswer.children[1]; //textarea元素
+				var btn = autoAnswer.children[2]; //input元素
+				var div = autoAnswer.children[3]; //div
+				var qsarr = ['你好', '约吗', '你是男的女的', '打我呀','亲爱的'];
+				var asarr = ['大家好就是真的好', '滚', '你猜', '你过来','在的，亲爱的，写代码辛苦了'];
+
+				//1.点击提交的时候：把文本域的内容渲染到ul里面
+				btn.onclick = function() {
+					show();
+				}
+				
+				//回车提交
+				tex.onkeydown = function(ev) {
+					if(ev.keyCode == 13) {
+						//回车键提交
+						show();
+					}
+				}
+				
+				function show() {
+					var val = tex.value.trim();
+					if(val) {
+						//非空
+						var html = `<li class="active">${val}</li>`;
+						ul.innerHTML += html;
+						
+						//清空表单并聚焦
+						tex.value = '';
+						tex.focus();
+						
+						//2.显示：对方正在输入，显示2秒钟，隐藏起来
+						css(div,'display','block');
+						
+						//开定时器
+						setTimeout(function() {
+							css(div,'display','none');
+							//机器人开始回复
+							var index = qsarr.indexOf(val);
+							if(index >= 0) {
+								//存在
+								var str = `<li>${asarr[index]}</li>`;
+								ul.innerHTML += str;
+							}else{
+								var str = `<li>风太大,你说什么,我听不到</li>`;
+								ul.innerHTML += str;
+							}
+						}, 2000);
+						
+					}else{
+						alert('你在干嘛');
+					}
+				}
+				
+				
+				
+			}
+		</script>
+	</head>
+
+	<body>
+		<fieldset>
+			<legend>自动应答机器人</legend>
+			<div id="autoAnswer" class="msg-list">
+				<ul>
+					<!--<li>你好</li>
+        				<li class="active">我很好</li>
+        				<li>你好</li>
+        				<li class="active">我很好</li>
+        				<li>你好</li>
+        				<li class="active">我很好</li>-->
+				</ul>
+				<textarea></textarea>
+				<input type="button" name="btn" id="btn" value="提交" />
+				<div class="status">对方正在输入...</div>
+			</div>
+		</fieldset>
+	</body>
+
+</html>

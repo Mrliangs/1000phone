@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/layui.css" />
+		<script src="layui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/Registration.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				width: 220px;
+				height:290px;
+				border: 2px solid #ccc;
+				margin: 130px auto;
+				padding: 20px;
+			}
+			
+			fieldset {
+				width: 200px;
+				height: 270px;
+				padding:10px
+			}
+			input{
+				margin:5px 0;
+			}
+			/*#use{
+				width: 20px;
+				height: 10px;
+			}*/
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<form action="" method="post">
+				<fieldset id="">
+					<legend><h2>注册页面</h2></legend>
+					<label>用户名:</label>
+					<input type="text" name="user" id="use" value=""placeholder="首字母数字即可"/><br />
+					<span id="inf"></span><br />
+					<label>密码：</label>
+					<input type="text" id="psw" /><br />
+					<span id="ind"></span><br />
+					<label>确认密码：</label>
+					<input type="text" id="pwwagain" /><br />
+					<span id="ins"></span><br />
+					<input type="button" id="btn" value="注册" class="layui-btn"/>
+					<button type="reset" class="layui-btn layui-btn-primary" id="btnn">登录</button>
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>

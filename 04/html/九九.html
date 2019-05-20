@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#output span {
+				display: inline-block;
+				width: 100px;
+				height: 40px;
+				margin: 5px;
+				line-height: 40px;
+				text-align: center;
+				background-color: #ccc;
+			}
+			
+			#output span:hover {
+				background-color: #fc0;
+				color: #fff;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var output = document.getElementById('output');
+				var a = '';
+				for(var i = 1; i <= 9; i++) {
+					for(var j = 1; j <= i; j++) {
+						a += '<span>' + j + 'x' + i + '=' + i * j+'</span>';
+					}
+					a += '<br/>';
+				}
+				output.innerHTML = a;
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>打印99乘法表</h1>
+		<div id="output">
+
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#bb').click(function(){
+					$('#cc').slideDown(1000);
+					$('#cc').slideUp(1000);
+				})
+				$('#aa').click(function(){
+					$('#cc').stop();
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<input type="button" name="aa" id="aa" value="停止" />&nbsp;&nbsp;
+		<input type="button" id="bb" value="运行"/>	
+		<div id="cc" style="width:200px;height:700px;background:yellow;display: none;">
+			hehehhhehhehe
+		</div>
+	</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>数据渲染</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				padding: 50px;
+				background: #d8d8d8;
+			}
+			
+			li {
+				list-style: none;
+				background: #fff;
+				width: 600px;
+				height: 100px;
+				position: relative;
+				margin-bottom: 10px;
+			}
+			
+			li .title {
+				padding: 5px;
+				font-size: 14px;
+				font-weight: lighter;
+			}
+			
+			li .name {
+				color: #ccc;
+				position: absolute;
+				left: 10px;
+				bottom: 10px;
+			}
+			
+			li .good {
+				position: absolute;
+				right: 10px;
+				bottom: 10px;
+			}
+			
+			li .good span {
+				display: block;
+				width: 80px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				cursor: pointer;
+				color: #fff;
+				margin-right: 10px;
+				float: left;
+				border-radius: 20px;
+			}
+			
+			li .good span:nth-child(1) {
+				background: lightblue;
+			}
+			
+			li .good span:nth-child(2) {
+				background: lightcoral;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				/*
+				 	需求：
+				 		*　将数据渲染到页面
+				 		* 根据数据，拼接字符串，生成节点
+				 		* 放到ｂｏｄｙ渲染
+				 			* 先把结构和样式写好(静态页面)
+				 			* 删除重复的部分(保留一条结构)
+				 			* 准备数据：[{},{},{}]
+				*/
+				var list = [{
+					"id": 1,
+					"content": "小明10年前背井离乡，家乡人从此再也喝不到井水。",
+					"good": 81,
+					"con": 100,
+					"username": "malin"
+				}, {
+					"id": 2,
+					"content": "VANS万斯官方大促专场",
+					"good": 66,
+					"con": 100,
+					"username": "assafasd"
+				}, {
+					"id": 3,
+					"content": "请说三条支撑你活下去的理由？因为我胡三六条，可是六条被人杠了……",
+					"good": 104,
+					"con": 298,
+					"username": "福尔蘑菇"
+				}, {
+					"id": 4,
+					"content": "有一只狼宝宝噢，它一 生下来不吃肉只吃素，它父母很担心啊。结果一天看到狼宝宝追一只兔子啦，父母很欣慰。然后狼宝宝抓住兔子说：把胡萝卜交出来！……",
+					"good": 14,
+					"con": 26,
+					"username": "小窝"
+				}, {
+					"id": 5,
+					"content": "从前有个捉迷藏社团， 他们的社长直到现在还没找到…",
+					"good": 3,
+					"con": 8,
+					"username": "煎饼侠"
+				},{
+					"id": 6,
+					"content": "印度两辆摩托车相撞，73人受伤",
+					"good": 3,
+					"con": 8,
+					"username": "煎饼侠"
+				}];
+				
+				//获取节点
+				var ul = document.getElementById('list');
+			
+				var res = list.map(function(item) {
+					//返回长度一样的新数组
+					//将静态内容，都替换成数组里面的数据
+					return `<li data-id="${item.id}">
+								<h3 class="title">${item.content}</h3>
+								<p class="name">${item.username}</p>
+								<p class="good">
+									<span class="dianzan">点赞：${item.good}</span>
+									<span class="dis">评论：${item.con}</span>
+								</p>
+							</li>`;
+				});
+				
+//				console.log(res);
+				var str = res.join('');//拼接数组变成字符串
+				
+//				console.log(str);
+				//设置内容
+				ul.innerHTML = str;//数据渲染
+			}
+		</script>
+	</head>
+
+	<body>
+		<ul id="list">
+			<!--<li data-id="">
+				<h3 class="title">说三条支撑你活下去的理由？因为我胡三六条，可是六条被人杠了……</h3>
+				<p class="name">malin</p>
+				<p class="good">
+					<span class="dianzan">点赞：15</span>
+					<span class="dis">评论：22</span>
+				</p>
+			</li>-->
+
+		</ul>
+	</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var i = ' ';
+        for (var n = 100; n < 1000; n++) {
+            var a = parseInt(n / 100);//百位
+            var b = parseInt((n / 10)  %10);//十位
+            var c = n % 10;//个位
+            if (n === a * a * a + b * b * b + c * c * c) {
+                i += n + ' , ';
+            }
+        }
+        document.write(i);
+    </script>
+</body>
+
+</html>

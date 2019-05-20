@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var num = prompt("请输入您的成绩：");
+			switch(true) {
+				case num < 60 && num > 0:
+					document.write('不及格');
+					break;
+				case num < 75 && num >= 60:
+					document.write('及格');
+					break;
+				case num <= 80 && num >= 75:
+					document.write('良好');
+					break;
+				case num > 85:
+					document.write('优秀');
+					break;
+				default:
+					document.write('上帝啊，请赐予我考神的力量吧');
+					break;
+
+			}
+		</script>
+	</body>
+
+</html>

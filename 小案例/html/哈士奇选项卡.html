@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>哈哈哈哈哈</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				text-align: center;
+				box-sizing: border-box;
+			}
+			/*nav{
+				width: 400px;
+				border-top:1px solid red;
+				box-sizing: border-box;
+ 			}*/
+			body{
+				margin:20px auto;
+			}
+			nav{
+				
+				width: 400px;
+				border-top: 1px solid #ccc;
+				padding: 15px;
+				margin: 0 auto;
+				
+			}
+			nav li {
+				display: inline;
+				width: 24%;
+				text-decoration: none;
+				padding: 15px;
+			}
+			
+			li:hover {
+				background-color: lightblue;
+				border-top: 1px solid red;
+				font-weight: 700;
+			}
+			
+			section {
+				height: 300px;
+				
+			}
+			
+			section img {
+				width: 400px;
+				height: 300px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<nav id="AA">
+			<li clas="aa">一哈</li>
+			<li>二哈</li>
+			<li>三哈</li>
+			<li>四哈</li>
+			<li>无哈</li>
+		</nav>
+		<div id="bbb">
+			<section class="bb" ><img src="../img/1.jpg" /></section>
+			<section class="bb"><img src="../img/2.jpg" /></section>
+			<section class="bb"><img src="../img/3.jpg" /></section>
+			<section class="bb"><img src="../img/4.jpg" /></section>
+			<section class="bb"><img src="../img/5.jpg" /></section>
+		</div>
+		<script type="text/javascript">
+			window.onload = function() {
+//				var nav = document.getElementById('AA');
+				var iNav = document.getElementsByTagName('li');
+//				var bbb = document.getElementById('bbb');
+				var bb = document.getElementsByClassName('bb');
+				for(var i = 0; i < iNav.length; i++) {
+					iNav[i].index = i;
+					iNav[i].onmouseover = function(){
+						for(var i=0;i<iNav.length;i++){
+							iNav[i].className='';
+						bb[i].style.display="none";
+						}
+						this.className='aa';
+						bb[this.index].style.display="block";
+					}
+					for (var m=1;m<iNav.length;m++) {
+						iNav[m].className='';
+						bb[m].style.display="none";
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

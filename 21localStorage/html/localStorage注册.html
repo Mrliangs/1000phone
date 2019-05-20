@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = () => {
+				let form = getid('form');
+				let user = getid('user');
+				let pass = getid('pass');
+				let reg = getid('reg');
+				let aa = document.querySelectorAll('#aa');
+				let arr = [];
+				let val = '';
+//				console.log(val);
+				//获取表单的值
+				//					let name=user.value;
+				//					let psw=pass.value;
+				//非空判断
+				if(user && pass) {
+					//正则判断  用户名验证
+					user.onblur = function() {
+						name = user.value;
+						if(name) {
+							if(checkReg.name(name)) {
+								aa[0].innerHTML = '验证成功';
+								arr.push('1');
+							} else {
+								aa[0].innerHTML = '验证不成功';
+							}
+						} else {
+							aa[0].innerHTML = '用户名不能为空';
+						}
+					}
+					//正则判断  密码验证
+					pass.onblur = function() {
+						psw = pass.value;
+						if(psw) {
+							if(checkReg.psweasy(psw)) {
+								aa[1].innerHTML = '验证成功';
+								arr.push('2');
+							} else {
+								aa[1].innerHTML = '验证不成功';
+							}
+						} else {
+							aa[1].innerHTML = '用户名不能为空';
+						}
+					}
+					console.log(user, pass);
+
+					reg.onclick = () => {
+						if(user && pass) {
+							if(arr.length == 2) {
+								
+								//获取两个表单的值，存到本地存储里面
+								let name = user.value;
+								let psw = pass.value;
+								//将内容存入本地
+								let storages=window.localStorage;
+								let olduser=storages.name1;
+								let oldpsw=storages.psw1;
+								
+								if(olduser&&oldpsw){
+									storages.name1=olduser+'&'+name;
+									storages.psw1=oldpsw+'&'+psw;
+								}else{
+									storages.name1=name;
+									storages.psw1=psw;
+								}
+								
+								//可以注册
+								window.open('localStorage登录.html?');
+							} else {
+								alert('请完善以上信息');
+							}
+						} else {
+							alert('请输入内容');
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<form id="form">
+			用户名：<input type="text" name="user" id="user" />&nbsp;<span id="aa"></span><br>
+			<br /> 
+			密&nbsp;&nbsp;码：&nbsp;<input type="password" name="pass" id="pass" />&nbsp;<span id="aa"></span><br>
+			<br />
+			<input type="button" value="注册" id="reg" />
+		</form>
+	</body>
+
+</html>

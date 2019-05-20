@@ -1,0 +1,65 @@
+<!doctype html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>限时抢购</title>
+	<style type="text/css">
+		#box {
+			width: 600px;
+			height: 400px;
+			background: #eeeeee;
+			margin: 0 auto;
+			line-height: 400px;
+			text-align: center;
+			position: relative;
+		}
+		
+		h2 {
+			position: absolute;
+			z-index: 2;
+			left: 40%;
+			top: 20%;
+			margin-left: 90px;
+		}
+	</style>
+</head>
+<script type="text/javascript">
+	window.onload = function() {
+		show();
+
+		function show() {
+			var startTime = new Date();
+			var endTime = new Date("2019/7/21,14:44:55")
+			var leaveTime = parseInt((endTime.getTime() - startTime.getTime()) / 1000);
+			var d = parseInt(leaveTime / (24 * 60 * 60));
+			console.log(h)
+			var h = parseInt(leaveTime / (60 * 60) % 24);
+			var m = parseInt(leaveTime / 60 % 60);
+			var s = parseInt(leaveTime % 60);
+			m = cleartime(m)
+			h = cleartime(h)
+			s = cleartime(s)
+			document.getElementById("box").innerHTML = d + "天" + h + "小时" + m + "分钟" + s + "秒";
+			setTimeout(show, 1000)
+			if(leaveTime <= 0) { //判断倒计时是否结束
+				document.getElementById("box").innerHTML = "团购结束"
+			};
+		}
+
+		function cleartime(i) {
+			if(i <= 10) {
+				i = "0" + i
+			}
+			return i
+		}
+	}
+</script>
+
+<body>
+	<h2>倒计时</h2>
+	<div id="box">
+
+	</div>
+</body>
+
+</html>

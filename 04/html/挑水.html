@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<h1>山上有一口缸可以装50升水，现在有15升水。
+		老和尚叫小和尚下山挑水，每次可以挑5升。问：小和尚
+		要挑几次水才可以把水缸挑满？通过编程解决这个问题。</h1>
+		<script type="text/javascript">
+			var a=50;
+			var b=15;
+			var c=5;
+			for(var i=0;i<(a/c);i++){
+				if(i*5==a-b){
+					document.write('结果要挑水的次数：'+i);
+					break;
+				}
+			}
+		</script>
+	</body>
+</html>

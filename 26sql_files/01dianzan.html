@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--清除缓存-->
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<title>微博点赞</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				padding: 50px;
+				background: #d8d8d8;
+			}
+			
+			li{
+				list-style: none;
+				background: #fff;
+				width: 600px;
+				height: 100px;
+				position: relative;
+				margin-bottom: 10px;
+			}
+			li .title{
+				padding: 5px;
+				font-size: 14px;
+				font-weight: lighter;
+				
+			}
+			li .name{
+				color: #ccc;
+				position: absolute;
+				left: 10px;
+				bottom: 10px;
+			}
+			li .good{
+				position: absolute;
+				right: 10px;
+				bottom: 10px;
+			}
+			li .good span{
+				display: block;
+				width: 80px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				cursor: pointer;
+				color: #fff;
+				margin-right: 10px;
+				float: left;
+				border-radius: 20px;
+				
+			}
+			li .good span:nth-child(1){
+				background: lightblue;
+			}
+			li .good span:nth-child(2){
+				background: lightcoral;
+			}
+		</style>
+		<script src="../common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+			 	数据存储：
+			 		* 数据库mysql(重点)
+			 		* 浏览器:localstorage/cookie(重点)
+			 		* 本地文件(硬盘)：json或记事本(了解)
+			 	需求：
+			 		* 读取本地文件(json文件)的数据渲染到页面
+			 			* 获取服务器的文件用ajax
+			 		* 点击点赞，点赞数量自增一(修改本地文件数据)
+			*/
+			window.onload = function() {
+				
+				var list = getid('list');
+				
+				//1.读取本地文件(json文件)的数据渲染到页面
+				ajax('get','api/weibo.json','',function(str) {
+//					console.log(str);//拿到数据
+					//将字符串转成对象，准备做数据渲染
+					var arr = JSON.parse(str);
+//					console.log(arr);
+					
+					var res = arr.map(function(item) {
+						return `<li data-id="${item.id}">
+									<h3 class="title">${item.content}</h3>
+									<p class="name">${item.username}</p>
+									<p class="good">
+										<span class="dianzan">点赞：${item.good}</span>
+										<span class="dis">评论：${item.con}</span>
+									</p>
+								</li>`;
+					}).join('');//将数组转成字符串
+					
+					list.innerHTML = res;//数据渲染
+					
+					
+					//2.点击点赞，点赞数量自增一(修改本地文件数据)：前端语言无法操纵硬盘文件，需要借助后端语言，所以这里要准备接口
+					list.onclick = function(ev) {
+						//只给点赞按钮绑定点击事件
+						if(ev.target.className == 'dianzan') {
+//							console.log(ev.target);
+							var id = (ev.target.parentNode.parentNode).dataset.id;
+//							console.log(id);
+							var url = 'api/01dianzan.php';
+							var data = 'cid=' + id;
+							ajax('post',url,data,function(str) {
+//								console.log(str);
+								var arr = JSON.parse(str);
+								var newgood = arr.good;
+								ev.target.innerHTML = '点赞：' + newgood;
+							});
+						}
+					}
+					
+					
+					
+				});
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<!--<li data-id="">
+					<h3 class="title">说三条支撑你活下去的理由？因为我胡三六条，可是六条被人杠了……</h3>
+					<p class="name">malin</p>
+					<p class="good">
+						<span class="dianzan">点赞：15</span>
+						<span class="dis">评论：22</span>
+					</p>
+			</li>-->
+			
+		</ul>
+	</body>
+</html>

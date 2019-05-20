@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			
+			.all {
+				width: 1200px;
+				height: 30px;
+				margin: 100px auto;
+				/*background-color: #235EA4;*/
+				padding-left: 10px;
+				/*margin-bottom: 10px;*/
+			}
+			
+			.all li {
+				width: 140px;
+				height: 30px;
+				background-color: #235EA4;
+				line-height: 30px;
+				text-align: center;
+				float: left;
+				margin-right: 30px;
+				display: inline;
+				position: relative;
+				cursor: pointer;
+				/*margin-bottom: 10px;*/
+				
+			}
+			.all li:hover{
+				background: red;
+			}
+			.all ul {
+				position: absolute;
+				left: 0;
+				top: 30px;
+				display: none;
+				/*margin-bottom: 10px;*/
+			}
+			.all ul li{
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			.all ul li:hover{
+				background: red;
+			}
+		</style>
+		<script src="../js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+				$(function() {
+					$('.all>li').hover(function() {
+						$(this).children().stop().slideToggle()
+					});
+				});
+
+		
+		</script>
+	</head>
+
+	<body>
+		<ul class="all">
+			<li>111
+				<ul>
+					<li>112</li>
+					<li>113</li>
+					<li>114</li>
+					<li>115</li>
+					<li>116</li>
+				</ul>
+			</li>
+			<li>121
+				<ul>
+					<li>122</li>
+					<li>123</li>
+					<li>124</li>
+					<li>125</li>
+					<li>126</li>
+				</ul>
+			</li>
+			<li>131
+				<ul>
+					<li>132</li>
+					<li>133</li>
+					<li>134</li>
+					<li>135</li>
+					<li>136</li>
+				</ul>
+			</li>
+			<li>141
+				<ul>
+					<li>142</li>
+					<li>143</li>
+					<li>144</li>
+					<li>145</li>
+					<li>146</li>
+				</ul>
+			</li>
+			<li>151
+				<ul>
+					<li>152</li>
+					<li>153</li>
+					<li>154</li>
+					<li>155</li>
+					<li>156</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+
+</html>

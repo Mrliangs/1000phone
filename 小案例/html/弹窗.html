@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>弹窗</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #CCCCCC;
+			}
+			#box {
+				width: 500px;
+				height: 412px;
+				margin: 50px auto;
+				border: 2px solid #ccc;
+				border-radius: 5px;
+				text-align: center;
+				padding: 15px;
+				display: none;
+				position: absolute;
+				
+				background: #fff;
+				z-index: 888;
+			}
+			/*input{
+				margin: 300px 300px;
+			}*/
+			#btop {
+				width: 490px;
+				height: 100px;
+				line-height: 100px;
+				border: 2px solid #ccc;
+				border-radius: 5px;
+				text-align: center;
+				margin: 3px;
+			}
+			
+			#bleft {
+				float: left;
+				width: 470px;
+				height: 290px;
+				margin: 3px;
+				border: 2px solid #CCCCCC;
+				border-radius: 5px;
+				text-align: center;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#bleft #con {
+				/*overflow: hidden;*/
+				/*height: 290px;*/
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding: 10px 30px;
+			}
+			
+			#bright {
+				float: left;
+				width: 10px;
+				height: 295px;
+				border: 2px solid #ccc;
+				border-radius: 5px;
+				position: relative;
+			}
+			
+			#brcons {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 10px;
+				height: 25px;
+				background: red;
+				border-radius: 3px;
+			}
+			#close{
+				position: absolute;
+				right: 5px;
+				top: 0px;
+				cursor: pointer;
+			}
+			#mark{
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.2);
+				z-index: 1;
+				display: none;
+			}
+		</style>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+			 	需求：
+			 		* 点击注册动态显示弹窗
+			 		* 点击关闭可以关闭弹窗
+			 		* 改变窗口大小保持弹窗在中央
+			*/
+			
+			window.onload = function() {
+				
+				//找到节点
+				var btn = getid('btn');
+				var box = getid('box');
+				var close = getid('close');
+				var mark = getid('mark');
+//				var box = getid('box');
+				var bleft = getid('bleft');
+				var con = getid('con');
+				var bright = getid('bright');
+				var brcons = getid('brcons');
+				
+				//1.点击注册按钮动态显示弹窗
+				btn.onclick = function() {
+					box.style.display = 'block';
+					mark.style.display = 'block';
+					
+					//js控制窗口在中央，遮罩高度100%
+					creatReg();		
+					
+				}
+				
+				function creatReg() {
+					var lef = (window.innerWidth - box.offsetWidth)/2 + 'px';
+					var to = (window.innerHeight - box.offsetHeight)/2 + 'px';
+					box.style.left = lef;
+					box.style.top = to;
+					mark.style.height = window.innerHeight + 'px';
+				}
+				
+				//2.点击关闭可以关闭弹窗
+				mark.onclick = close.onclick = function() {//点击遮罩和关闭按钮都可以隐藏弹窗
+					box.style.display = 'none';
+					mark.style.display = 'none';
+				}
+				
+				//3.改变窗口大小保持弹窗在中央
+//				var num = 0;
+				window.onresize = function() {//当窗口大小发生改变的时候触发
+//					num ++;
+//					console.log(num);
+					creatReg();
+				}
+				
+//				var a = b = 9;
+
+			//需求：拖拽控制盒子的运动
+
+				//鼠标案子啊
+				brcons.onmousedown = function(ev) {
+					var brConsY = ev.offsetY //计算距离
+
+					//2.计算新的top
+					document.onmousemove = function(ev) {
+						var top = ev.clientY - brConsY-bright.offsetTop-box.offsetTop;
+						var aa = bright.offsetHeight - brcons.offsetHeight;
+						if(top <= 0) { //判断临界值
+							top = 0;
+						} else if(top >= aa) {
+							top = aa;
+						}
+						brcons.style.top = top + 'px';
+
+						//计算比例
+						var bb = top / aa;
+						console.log(bb);
+
+						//计算左边的运动距离
+						var cc = bleft.offsetHeight - con.offsetHeight;
+						var move = bb * cc;
+						con.style.top = move + 'px';
+
+					}
+					document.onmouseup = function() {
+						document.onmousemove = null;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="注册" />
+		<div  id="box">
+			<div id="btop">
+				<h1>小米的温馨提示</h1>
+			</div>
+			<div id="bleft">
+				<div id="con">
+					（原标题：重要提醒！节后上班，这6件事得赶紧办，可别忘了！）<br /> 2019年已经到来，上班后，这6件重要事儿可别忘了办。
+
+					<br /> 申报个人所得税专项附加扣除
+
+					<br /> 新修改的个人所得税法将让纳税人将获得更大减税红利，这项新政于2019年1月1日正式实施。
+
+					<br/> 其中，1月1日起，个人所得税专项附加扣除政策实施。个人所得税专项附加扣除，
+					<br> 是指个人所得税法规定的子女教育、继续教育、大病医疗、住房贷款利息或者住房租金、赡
+					<br> 养老人等6项专项附加扣除。
+					<br /> 据介绍，纳税人的填报方式有四种：① 按照各地税务局公告的渠道<br> 下载手机APP“个人所得税”并填写；② 登录各省电子税务局网站填写；③ 填写电子<br> 信息表；④ 填写纸质信息表。
+				</div>
+			</div>
+			<div id="bright">
+				<div id="brcons"></div>
+			</div>
+			<p id="close">X</p>
+		</div>
+		<div id="mark"></div>
+	</body>
+</html>

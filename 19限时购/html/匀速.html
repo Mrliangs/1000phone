@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#bird {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var bird = document.getElementById('bird');
+
+				//改变left 使匀速
+				setInterval(function(){
+				var speed = bird.offsetLeft + 5; //速度为5px
+
+				//临界值判断
+				if(speed >= window.innerWidth - bird.offsetWidth) {
+					speed = window.innerWidth - bird.offsetWidth;
+				}
+				bird.style.left = speed + 'px';
+},30);//每30毫秒移动5px
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="bird">
+			<img src="../img/bird.gif" />
+		</div>
+
+	</body>
+
+</html>

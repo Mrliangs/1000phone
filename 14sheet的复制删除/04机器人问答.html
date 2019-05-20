@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			
+			.msg-list {
+				position: relative;
+				width: 600px;
+				margin: 0 auto;
+			}
+			
+			.msg-list ul {
+				padding: 10px;
+				min-height: 200px;
+				max-height: 400px;
+				overflow-y: auto;
+				border: 1px solid #ddd;
+			}
+			
+			.msg-list li {
+				float: left;
+				clear: both;
+				margin: 10px 0;
+				padding: 5px;
+				line-height: 2;
+				border-radius: 5px;
+				background-color: #efefef;
+			}
+			
+			.msg-list li.active {
+				float: right;
+				background-color: #58bc58;
+				color: #fff;
+			}
+			
+			.msg-list textarea {
+				display: block;
+				min-height: 50px;
+				margin: 10px 0;
+				width: 100%;
+				box-sizing: border-box;
+			}
+			
+			.status {
+				display: none;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				padding: 5px 10px;
+				text-align: center;
+				color: #999;
+			}
+		</style>
+		<script type="text/javascript">
+			/*
+							机器人问答：
+							
+								* 问
+									* 输入内容，点击的时候，创建节点li ，样式active
+									* 回车也可以提交
+								* 答
+									* 收到内容后，等3秒后回复
+									* 回复的内容：根据对方的内容回复对应内容
+									* 提示信息：对方正在输入
+						 */
+
+			window.onload = function() {
+
+				//1.找节点
+				var autoAnswer = document.getElementById('autoAnswer');
+				console.log(autoAnswer.children.length); //找到所有子节点
+				var ul = autoAnswer.children[0];
+				var textEle = autoAnswer.children[1];
+				var btn = autoAnswer.children[2];
+				var status = autoAnswer.children[3];
+
+				var qarr = ['你好', '约吗', '你是男的女的'];
+				var aarr = ['大家好才是真的好', '滚', '不男不女'];
+
+				//1.问
+				btn.onclick = function() {
+					creatQs();
+				}
+
+				function creatQs() {
+					var val = textEle.value.trim(); //去空格
+					if(val) {
+						//非空
+
+						//提问
+						var qli = document.createElement('li');
+						qli.className = 'active';
+						qli.innerHTML = val;
+						ul.appendChild(qli); //插入节点
+						textEle.value = ''; //清空
+						textEle.focus(); //聚焦
+
+						//回答
+						var index = qarr.indexOf(val); //找到返回下标 找不到 -1
+						var ali = document.createElement('li');
+						if(index >= 0) {
+							//找到该关键字
+							ali.innerHTML = aarr[index];
+						} else {
+							ali.innerHTML = '风太大了，我听不到,你说什么火星文？';
+						}
+
+						status.style.display = 'block'; //显示正在输入
+
+						setTimeout(function() { //3秒后回复
+							status.style.display = 'none';
+							ul.appendChild(ali);
+						}, 3000);
+						
+						ul.scrollTop='9999px';
+
+					} else {
+						alert('您没有输入内容');
+					}
+				}
+
+				textEle.onkeyup = function(ev) {
+					if(ev.keyCode==13){
+						creatQs(); //回车也能提交
+					}
+					
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>自动应答机器人</h1>
+		<div id="autoAnswer" class="msg-list">
+			<ul>
+				<!--<li>你好</li>
+				<li class="active">我很好</li>
+				<li>你好</li>
+				<li class="active">我很好</li>
+				<li>你好</li>
+				<li class="active">我很好</li>-->
+			</ul>
+			<textarea></textarea>
+			<button>提交</button>
+			<div class="status">对方正在输入...</div>
+		</div>
+	</body>
+
+</html>

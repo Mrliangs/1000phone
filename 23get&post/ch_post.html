@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var user = getid('user');
+				var psw = getid('psw');
+				var inf = getid('inf');
+				var btn = getid('btn');
+
+				user.onblur = function() {
+
+					var uses = user.value.trim();
+					//1.创建ajax对象
+					var xhr = new XMLHttpRequest();
+
+					xhr.open('POST','api/ch_post.php',true);
+					xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+					xhr.send('username=' + uses);
+
+					xhr.onreadystatechange = function() {
+						if(xhr.readyState == 4) {
+							if(xhr.status == 200) {
+								var str = xhr.responseText;
+								if(str == '1') {
+									inf.innerHTML = '呵呵通过';
+								} else {
+									inf.innerHTML = '哈哈不通过';
+								}
+							}
+						}
+					}
+
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		用户moing:<input type="text" name="user" id="user" value="" /><span id="inf"></span><br /> 
+		密码：<input type="text" name="psw" id="psw" value="" /><br />
+		<input type="button" id="btn" value="登录" />
+	</body>
+
+</html>

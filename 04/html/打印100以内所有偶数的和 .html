@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>打印100以内所有偶数的和</title>
+		<style type="text/css">
+			fieldset {
+				width: 500px;
+				height: 60px;
+				margin: 0 auto;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var tex1 = document.getElementById('tex1'); //第一个数字
+				var tex2 = document.getElementById('tex2'); //第二个数字
+				var btn = document.getElementById('btn');
+				var a = document.getElementById('aa');
+				btn.onclick = function() {
+					var val1 = tex1.value.trim();
+					var val2 = tex2.value.trim();
+					var sum = 0;
+					if(val1 && val2) {
+						//必须是数字
+						if(isNaN(val1) || isNaN(val2)) {
+//							alert('请重新输入数字');
+//							console.log(aa)
+						} else {
+							//都是数字。
+							for(var i = val1; i < val2; i++) {
+								if(i % 2 == 0) {
+									sum += i;
+								}
+							}
+//							a.innerHTML += sum;
+							a.innerHTML =  sum;
+						}
+					} else {
+						alert('请输入两个数字');
+					}
+					
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<fieldset id="">
+			<legend>打印100以内所有偶数的和 </legend>
+			<input type="text" name="tex1" id="tex1" value="" />
+			<input type="text" name="tex2" id="tex2" value="" />
+			<input type="button" name="btn" id="btn" value="计算结果" />
+			<div id="aa">
+
+			</div>
+		</fieldset>
+
+	</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>创建表格</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				padding: 50px;
+				
+			}
+			#tb{
+				/*细线边框*/
+				border-collapse: collapse;
+				margin-top: 50px;
+			}
+			#tb td{
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
+				border: 1px solid #d8d8d8;
+				text-align: center;
+			}
+		</style>
+		<script src="../common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				/*
+				 	需求：
+				 		* 根据内容创建节点，插入到表格
+				 		* 隔行变色
+				 		* 点击可以删除当行
+				 		* 点击复制可以复制当行
+				*/
+				
+				//节点
+				var tex1 = document.getElementById('tex1');
+				var tex2 = document.getElementById('tex2');
+				var btn = document.getElementById('btn');
+				var tb = document.getElementById('tb');
+				var tbodys = tb.tBodies[0];//找到tbody节点
+				var rows = tbodys.getElementsByTagName('tr');
+				var dels = tbodys.getElementsByClassName('del');//删除按钮
+				var clones = tbodys.getElementsByClassName('clone');//复制按钮
+				
+				//1.根据内容创建节点，插入到表格
+				btn.onclick = function() {
+					var username = tex1.value.trim();
+					var psw = tex2.value.trim();
+					
+					if(username && psw) {
+						//非空
+//						var tr = document.createElement('tr');
+//						var td1 = document.createElement('td');
+//						td1.innerHTML = username;
+//						tr.appendChild(td1);
+						var html = `<tr>
+										<td>${username}</td>
+										<td>${psw}</td>
+										<td class="del"><a href="###">删除</a></td>
+										<td class="clone"><a href="javascript:;">复制</a></td>
+									</tr>`;
+						
+						tbodys.innerHTML += html;//新创建的内容放到末尾
+						
+						//清空数据
+						tex1.value = '';
+						tex2.value = '';
+						tex1.focus();//聚焦
+					}else{
+						alert('请输入完整的内容');
+					}
+					
+					setColor();
+					delEle();
+				}
+				
+				//2.隔行变色
+				function setColor() {
+					for(var i = 0; i < rows.length; i++) {
+						if(i % 2 == 0) {
+							css(rows[i], 'backgroundColor','pink');
+						}else{
+							css(rows[i], 'backgroundColor','#58bc58');
+						}
+					}
+				}
+				
+				setColor();
+				
+				//3.点击可以删除当行
+				function delEle() {
+					for(var i = 0; i < dels.length; i++) {
+						dels[i].onclick = function() {
+							console.log(this.parentNode);//找到点击对象的父节点就是要删除的目标
+							//删除节点   父节点.removeChild(删除的子节点 tr)
+							var res = confirm('您确定不要我了吗？');
+							if(res) {
+								tbodys.removeChild(this.parentNode);
+							}
+						}
+					}
+					setColor();
+				}
+				
+				delEle();
+				
+				//2.点击复制当行
+				function cloneEle() {
+					for(var i = 0; i < clones.length; i++) {
+						clones[i].onclick = function() {
+							//复制     要复制节点.cloneNode(true)
+							var newTr = this.parentNode.cloneNode(true);
+							//插入节点   父节点.appendChild(新节点)
+							tbodys.appendChild(newTr);
+							setColor();
+							cloneEle();
+							delEle();
+						}
+					}	
+				}
+				
+				cloneEle();
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		用户名：<input type="text" name="tex1" id="tex1" value="" />
+		密码：<input type="text" name="tex2" id="tex2" value="" />
+		<input type="button" id="btn" value="创建" />
+		<table id="tb" border="" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<td>用户名</td>
+					<td>密码</td>
+					<td>删除</td>
+					<td>复制</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>张三</td>
+					<td>123456</td>
+					<td class="del"><a href="###">删除</a></td>
+					<td class="clone"><a href="javascript:;">复制</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var a = prompt("请输入您的体重kg：");
+			var b = prompt("请输入您的身高：");
+			var c = b/100;
+			var Bml = a / (c * c);
+			switch(true) {
+				case Bml < 18.5:
+					document.write('您的BML数值:过轻;');
+					break;
+				case Bml >= 18.5&& Bml < 25 :
+					document.write('您的BML数值:正常;');
+					break;
+				case Bml >= 25 && Bml < 28:
+					document.write('您的BML数值:过重;');
+					break;
+				case Bml >= 28&& Bml < 32 :
+					document.write('您的BML数值:肥胖;');
+					break;
+				case Bml >= 32:
+					document.write('您的BML数值:非常肥胖;');
+					break;
+				default:
+					document.write('请输入您的体重身高信息哦');
+					break;
+			}
+		</script>
+	</body>
+
+</html>

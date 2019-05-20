@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--2.找出100-999以内所有的水仙花数，三位数，各位立方和等于该数本身。
+
+			153 = 1*1*1 + 5*5*5 + 3*3*3-->
+		<script type="text/javascript">
+			var a = prompt();
+			var b = prompt();
+			if(a && b) {
+				if(isNaN(a) || isNaN(b)) {
+					alert("您输入的不是数字");
+				} else {
+					if(100 <= a && b < 1000) {
+						var q=' ';
+						for(var i = a; i < b; i++) {
+							var c = parseInt(i/100);
+							var e = parseInt((i/10)%10);
+							var f = parseInt(i%10);
+							if (i === c*c*c*+e*e*e+f*f*f) {
+								q+=i+',';
+							}
+						}document.write(q);
+					} else {
+						alert("输入100到1000之间的数");
+					}
+				}
+			} else {
+				alert("请重新输入")
+			}
+		</script>
+	</body>
+
+</html>

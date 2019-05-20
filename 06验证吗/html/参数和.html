@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>封装一个函数，计算所有传入参数的和</title>
+	</head>
+	<body>
+		<h1>封装一个函数，计算所有传入参数的和</h1>
+		<script type="text/javascript">
+		function canShu(){
+			var sum=0;
+			for(var i=0;i<arguments.length;i++){
+				sum+=arguments[i];
+			}
+			return sum;
+			
+		}
+		var a=canShu(1,2,3,4,4,4,4,4,4);
+	
+		document.write(a);
+		</script>
+	</body>
+</html>

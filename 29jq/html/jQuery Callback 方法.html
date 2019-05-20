@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//在隐藏效果完全实现后回调函数:
+				//使用 callback 实例
+				$('#aa').click(function(){
+					$('#aaa').toggle(function(){
+						alert('aaaaaaaa');
+					})
+				})
+
+				//以下实例没有回调函数，警告框会在隐藏效果完成前弹出：
+				//没有 callback(回调)
+//				$('#aa').click(function(){
+//					$('#aaa').toggle();
+//						alert('aaaaaaaa');
+//					
+//				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<button id="aa">wo snc</button>
+		<p id="aaa">来捉迷藏丫丫</p>
+	</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			.main {
+				width: 400px;
+				margin: 100px auto;
+			}
+			
+			.main ul li a,
+			.main ul li dl dt,
+			dd {
+				display: block;
+				width: 100%;
+				height: 40px;
+				background: #999;
+				font: 20px/40px "";
+				text-align: center;
+				list-style: none;
+				color: #fff;
+				margin-bottom: 5px;
+				text-decoration: none;
+			}
+			
+			.main ul li dl dt {
+				background: #ccc;
+			}
+			
+			.main ul li {
+				height: 40px;
+				margin-bottom: 5px;
+				overflow: hidden;
+				transition: 1s;
+			}
+		</style>
+		<script src="../js/common.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var olis = document.querySelectorAll('li');
+				var oA = document.querySelectorAll('a');
+				var oDt = document.querySelectorAll('dt');
+				console.log(olis, oA, oDt);
+//								var onOff = true;
+				for(var i = 0; i < oA.length; i++) {
+					oA[i].index = i;
+					oA[i].onOff = true;
+					oA[i].onclick = function() {
+						if(this.onOff) {
+							for(var j = 0; j < oA.length; j++) {
+								olis[j].style.height = "40px";
+								oA[j].style.background = "#999";
+								oA[j].onOff=true;
+//								isok = true;
+							}
+							olis[this.index].style.height = "225px";
+							this.style.background = "#153170";
+							this.onOff=false;
+							//						isok=!isok;
+						} else {
+							olis[this.index].style.height = '40px';
+							this.onOff = true;
+						}
+
+					}
+				}
+				for(var j = 0; j < oDt.length; j++) {
+					oDt[j].onmouseenter = function() {
+						for(var i = 0; i < oDt.length; i++) {
+							oDt[i].style.background = '#ccc';
+						}
+						this.style.background = 'yellow';
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="main">
+			<ul>
+				<li>
+					<a href="javascript:">美女</a>
+					<dl>
+						<dt>欧阳娜娜</dt>
+						<dt>刘亦菲</dt>
+						<dt>刘诗诗</dt>
+						<dt>林志玲</dt>
+					</dl>
+				</li>
+				<li>
+					<a href="javascript:">男神</a>
+					<dl>
+						<dt>胡歌</dt>
+						<dt>霍建华</dt>
+						<dt>刘德华</dt>
+						<dt>林志炫</dt>
+					</dl>
+				</li>
+				<li>
+					<a href="javascript:">爱好</a>
+					<dl>
+						<dt>爱打代码</dt>
+						<dt>吃饭</dt>
+						<dt>睡觉</dt>
+						<dt>打游戏</dt>
+					</dl>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

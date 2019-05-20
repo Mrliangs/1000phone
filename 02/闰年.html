@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		
+		<script type="text/javascript">
+			var year=prompt();
+			var a = year % 4 == 0;
+			var b = year % 100 !== 0;
+			var c = year % 400 == 0;
+			if( a &&  b ||  c){
+				alert("是闰年");
+			} else {
+				alert("不是");
+				
+			}
+		</script>
+	</body>
+
+</html>

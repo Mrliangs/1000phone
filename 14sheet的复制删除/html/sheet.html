@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				padding: 50px;
+				margin: 0 auto;
+			}
+			
+			.aa {
+				width: 400px;
+				height: 120px;
+				background: coral;
+			}
+			
+			.aa input {
+				margin: 10px;
+			}
+			
+			#tb {
+				/*细线边框*/
+				border-collapse: collapse;
+				margin-top: 50px;
+			}
+			
+			#tb td {
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
+				border: 1px solid #d8d8d8;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+			/*
+									 
+									 * 					需求：
+															 		* 插入新内容
+															 		* 删除当行
+															 		* 复制当行插入末尾
+									 * 
+									 * 
+									 * 
+									 * */
+			window.onload = function() {
+				var tex1 = document.getElementById('tex1');
+				var tex2 = document.getElementById('tex2');
+				var btn = document.getElementById('btn');
+				//			var tb=document.getElementById('tb');
+				var tbody = tb.tBodies[0]; //找到tbody节点
+				var oRrs = tbody.getElementsByTagName('tr');
+				var oDels = document.getElementsByClassName('del');
+				var oClones = document.getElementsByClassName('clone');
+
+				btn.onclick = function() {
+					var usename = tex1.value.trim();
+					var psw = tex2.value.trim();
+
+					//判断
+					if(usename && psw) {
+						//非空
+						var html = `<tr>
+							<td>${usename}</td>
+							<td>${psw}</td>
+							<td class="del"><a href="javascript:;">删除</a></td>
+							<td class="clone"><a href="javascript:;">复制</a></td>
+						</tr>`;
+						tbody.innerHTML += html;
+						
+						
+						//清空数据
+						tex1.value = '';
+						tex2.value = '';
+						tex1.focus();
+					} else {
+						alert('请输入完整的内容');
+					}
+					del();
+						clone();
+						update();
+//						color();
+				}
+
+				//隔行变色
+				update() ;
+				function update() {
+					for(var i = 0; i < oRrs.length; i++) {
+						//						var p=oRrs.getElementsByTagName('td');
+						if(i % 2 == 0) {
+							oRrs[i].style.background = 'blanchedalmond';
+						} else {
+							oRrs[i].style.background = 'brown';
+						}
+						color();
+					}
+					
+				}
+				//删除
+				del() ;
+				function del() {
+					for(var i = 0; i < oDels.length; i++) {
+						oDels[i].onclick = function() {
+							var res = confirm('略');
+							if(res) {
+								tbody.removeChild(this.parentNode);
+								update();
+//								del();
+								clone();
+								color();
+							}
+
+						}
+					}
+				}
+				//复制
+				clone();
+				function clone() {
+					for(var i = 0; i < oClones.length; i++) {
+						oClones[i].onclick = function() {
+							//点击按钮，复制当行，插入末尾
+
+							var newele = (this.parentNode).cloneNode(true);
+							tbody.appendChild(newele);
+							update();
+							clone();
+							del();
+//							color();
+						}
+					}
+				}
+				
+				
+				//显示高亮
+				color() ;
+				function color() {
+					for(var i = 0; i < oRrs.length; i++) {
+						var oldcolor = '';
+						oRrs[i].onmouseover = function() {
+							oldcolor = this.style.background;
+							this.style.background = 'yellow';
+
+						}
+
+						oRrs[i].onmouseout = function() {
+							this.style.background = oldcolor; //变回原来的元素
+						}
+					}
+				}
+
+				
+				}
+			
+		</script>
+	</head>
+
+	<body>
+		<div class="aa">
+			用户名：<input type="text" name="tex1" id="tex1" value=""><br /> 密码：
+			<input type="text" name="tex2" id="tex2" value=""><br />
+			<input type="button" name="" id="btn" value="创建表格" />
+		</div>
+
+		<table id="tb" border="" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<td>用户名</td>
+					<td>密码</td>
+					<td>删除</td>
+					<td>复制</td>
+				</tr>
+
+			</thead>
+			<tbody>
+				<tr>
+					<td>张三</td>
+					<td>123456</td>
+					<td class="del">
+						<a href="javascript:;">删除</a>
+					</td>
+					<td class="clone">
+						<a href="javascript:;">复制</a>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+
+</html>

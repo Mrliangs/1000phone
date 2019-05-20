@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#menu {
+				width: 200px;
+				height: 0;
+				background: #ccc;
+				overflow: hidden;
+			}
+		</style>
+		
+		<script src="../js/common.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var btn = getid('btn');
+				var menu = getid('menu');
+				var isOk = true;
+				btn.onclick = function() {
+					if(isOk) {
+						startMove(menu, {
+							'height': 400
+						});
+					} else {
+						startMove(menu, {
+							'height': 0
+						});
+					}
+					isOk = !isOk;
+
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="box">
+			<input type="button" id="btn" value="下拉菜单" />
+			<div id="menu">
+				菜单
+			</div>
+		</div>
+	</body>
+
+</html>

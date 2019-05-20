@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function() {
+				var cc = decodeURI(location.search).slice(1);
+
+				function strToObj(str) {
+					var json = {};
+					var arr1 = str.split('&');
+					for(var i = 0; i < arr1.length; i++) {
+						var arr2 = arr1[i].split('=');
+						json[arr2[0]] = arr2[1];
+					}
+					return json;
+				}
+				var good = strToObj(cc);
+//				console.log(good);
+
+				var html = `<img src="${good.scr}"/><p><span class="title">	${good.title}</span></p>
+							<p class="p2"><span class="a1">${good.price}</span></p>`;
+
+				var gooddd = document.getElementById('gooddd');
+				gooddd.innerHTML = html;
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>详情页</h1>
+		<div id="gooddd">
+	
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>懒加载</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			#con{
+				width: 600px;
+				margin: 10px auto;
+				position: absolute;
+				top: 100px;
+				left: 50px;
+			}
+			#con li{
+				width: 600px;
+				height: 30px;
+				line-height: 30px;
+				border: 1px solid #d8d8d8;
+				margin-bottom: 5px;
+			}
+			#more{
+				width: 600px;
+				height: 30px;
+				background: lemonchiffon;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+				margin: 0 auto;
+			}
+			.big{
+				display: none;
+				width: 100px;
+				margin:10px  auto;
+				position: relative;
+			}
+			.box{
+				width:100px;
+				height:100px;
+				/*border:1px solid #ccc;*/
+				position: absolute;
+			}
+			.box p{
+				width: 30px;
+				height:30px;
+				background:black;
+				border-radius:50%;
+				position:absolute;
+				animation: donhua 2s infinite;
+			}
+			.box p:nth-child(1){
+				top:0 ;
+				left: 0;
+			}
+			.box p:nth-child(2){
+				top:0 ;
+				right: 0;
+			}
+			.box p:nth-child(3){
+				bottom: 0;
+				right: 0;
+			}
+			.box p:nth-child(4){
+				bottom:0 ;
+				left: 0;
+			}
+			.box:nth-child(2){
+				transform: rotate(45deg);
+			}
+			@keyframes donhua{
+				0%{transform: scale(1);}
+				50%{transform: scale(0);}
+				100%{transform: scale(1);}
+			}
+			.box:nth-child(1) p:nth-child(1){
+				animation-delay: 0.2s;
+			}
+			.box:nth-child(2) p:nth-child(1){
+				animation-delay: 0.4s;
+			}
+			.box:nth-child(1) p:nth-child(2){
+				animation-delay: 0.6s;
+			}
+			.box:nth-child(2) p:nth-child(2){
+				animation-delay: 0.8s;
+			}
+			.box:nth-child(1) p:nth-child(3){
+				animation-delay: 1s;
+			}
+			.box:nth-child(2) p:nth-child(3){
+				animation-delay: 1.2s;
+			}
+			.box:nth-child(1) p:nth-child(4){
+				animation-delay: 1.4s;
+			}
+			.box:nth-child(2) p:nth-child(4){
+				animation-delay: 1.6s;
+			}
+		</style>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				/*
+				 	需求：懒加载
+				 		* 滚动滑轮到达临界点的时候，加载新数据渲染
+				 			* 临界值的判断(盒子的高度-可视区的高度)
+				 */
+				var arr = ['首艘尼米兹级航母进坞大修','韩日"雷达事件"后续：互不相让，事态不断扩大','韩新型3000吨级潜艇初步设计已完成 明年启动建造','俄方:美在俄边境海域部署高精度无核武器战略系统','日媒:中国海军将举行国际阅舰式 日本拟派舰参加','叙利亚军方拦截数枚不明导弹 袭击目标为首都设施','吉布提"成长史":从殖民地变成地缘政治"香饽饽"','土总统称对叙库尔德武装不再忍 法媒:土有4张王牌'];
+				
+				var con = getid('con');
+				var more = getid('more');
+				var gif = getid('gif');
+			
+				console.log(con.offsetHeight);
+				
+				var res = arr.map(function(item) {//假设这是数据查询的新数据
+					return `<li>${item}</li>`;
+				}).join('');
+				
+				//当达到临界点就渲染新数据
+				var isok = true;//开关：控制数据一片一片加载
+				window.onscroll = function() {
+					var scrollTop = window.scrollY;//垂直滚动距离
+					if(scrollTop >= (con.offsetHeight + con.offsetTop - window.innerHeight)) {
+						if(isok) {
+							isok = false;
+							css(gif,'display','block');
+							setTimeout(function() {//定时器是异步的
+								css(gif,'display','none');
+								con.innerHTML += res;
+								isok = true;//作用：每次数据都完全渲染成功，才允许加载第二次数据
+							},1000);
+							
+						}
+						
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="con">
+			<li>首艘尼米兹级航母进坞大修1</li>
+			<li>首艘尼米兹级航母进坞大修2</li>
+			<li>首艘尼米兹级航母进坞大修1</li>
+			<li>首艘尼米兹级航母进坞大修2</li>
+			<li>首艘尼米兹级航母进坞大修1</li>
+			<li>首艘尼米兹级航母进坞大修2</li>
+			<li>首艘尼米兹级航母进坞大修1</li>
+			
+			
+		</ul>
+		<div  class="big" id="gif">		
+			<div class="box">
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+			</div>
+			<div class="box">
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+			</div>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			font-size: 12px;
+			font-family: "微软雅黑";
+			color: #000000;
+			text-decoration: none;
+			list-style-type: none;
+		}
+		
+		#tab-list {
+			width: 275px;
+			height: 190px;
+			margin: 30px auto;
+		}
+		
+		#list {
+			height: 32px;
+			border-bottom: #8B4513 2px solid;
+		}
+		
+		#list li {
+			display: inline-block;
+			width: 60px;
+			border: 1px solid #999999;
+			border-bottom: none;
+			line-height: 30px;
+			margin-left: 5px;
+			text-align: center;
+			cursor: pointer;
+		}
+		
+		#list .active {
+			border-top: 2px solid #8B4513;
+			border-bottom: 2px solid #fff;
+			
+		}
+		
+		#tab-list div {
+			border: 1px solid #7396B8;
+			border-top: none;
+		}
+		
+		#tab-list div li {
+			height: 30px;
+			line-height: 30px;
+			text-indent: 8px;
+		}
+		
+		#tab-list .show {
+			display: block;
+		}
+		
+		#tab-list .hidden {
+			display: none;
+		}
+	</style>
+	<script src="../js/common.js"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			var tab = document.getElementById('tab-list');
+			var list = document.getElementById('list').getElementsByTagName('li');
+			var div = tab.getElementsByTagName('div');
+			var timer = null;
+			var index = 0;
+			for(var i = 0; i < list.length; i++) {
+				list[i].num = i;
+				list[i].onmouseover = function() {
+					Change(this.num);
+				}
+			}
+			
+			function Change(curIndex) {
+				for(var i = 0; i < list.length; i++) {
+					list[i].className = "";
+					div[i].className = "hidden";
+				}
+				list[curIndex].className = "active";
+				div[curIndex].className = "show";
+				index = curIndex;
+			}
+			//自动播放
+			function autoPlay() {
+				timer = setInterval(function() {
+					index++;
+					if(index > list.length - 1) {
+						index = 0;
+					}
+					Change(index);
+				}, 500);
+			}
+			autoPlay();
+			tab.onmouseover = function() {
+				clearInterval(timer);
+			}
+			tab.onmouseout = function() {
+				autoPlay();
+			}
+		}
+	</script>
+
+	<body>
+		<div id="tab-list">
+			<ul id="list">
+				<li class="active">房产</li>
+				<li>家居</li>
+				<li>二手房</li>
+			</ul>
+			<div class="show">
+				<ul>
+					<li>
+						<a href="javascript:;">275万购昌平邻铁三居 总价20万买一居</a>
+					</li>
+					<li>
+						<a href="javascript:;">200万内购五环三居 140万安家东三环</a>
+					</li>
+					<li>
+						<a href="javascript:;">北京首现零首付楼盘 53万购东5环50平</a>
+					</li>
+					<li>
+						<a href="javascript:;">京楼盘直降5000 中信府 公园楼王现房</a>
+					</li>
+				</ul>
+			</div>
+			<div class="hidden">
+				<ul>
+					<li>
+						<a href="javascript:;">40平出租屋大改造 美少女的混搭小窝</a>
+					</li>
+					<li>
+						<a href="javascript:;">经典清新简欧爱家 90平老房焕发新生</a>
+					</li>
+					<li>
+						<a href="javascript:;">新中式的酷色温情 66平撞色活泼家居</a>
+					</li>
+					<li>
+						<a href="javascript:;">瓷砖就像选好老婆 卫生间烟道的设计</a>
+					</li>
+				</ul>
+			</div>
+			<div class="hidden">
+				<ul>
+					<li>
+						<a href="javascript:;">通州豪华3居260万 二环稀缺2居250w甩</a>
+					</li>
+					<li>
+						<a href="javascript:;">西3环通透2居290万 130万2居限量抢购</a>
+					</li>
+					<li>
+						<a href="javascript:;">黄城根小学学区仅260万 121平70万抛!</a>
+					</li>
+					<li>
+						<a href="javascript:;">独家别墅280万 苏州桥2居优惠价248万</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			var flag = true;
+
+			headPhotoFile = document.getElementById("headPhotoFile");
+
+			if(headPhotoFile) {
+				if(!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(headPhotoFile)) {
+					alert("图片类型必须是gif,jpeg,jpg,png中的一种");
+					flag = false;
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

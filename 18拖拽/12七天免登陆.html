@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>七天免登陆</title>
+		<style type="text/css">
+			body {
+				background-color: rgb(177, 208, 224);
+				font: normal 12px Trebuchet MS;
+				color: #000;
+			}
+			
+			form {
+				width: 220px;
+				padding: 10px;
+				background-color: #DDEEF6;
+				box-shadow: 0px 0px 10px 0px #888888;
+				border: 1px solid #DDEEF6;
+				border-radius: 6px;
+				margin: auto;
+			}
+			
+			.roundedCorners-textbox {
+				border: 1px solid #999;
+				width: 160px;
+			}
+			
+			.checkbox {
+				margin-left: 30px;
+				border: 1px solid #999;
+				width: 20px;
+			}
+		</style>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+			 	七天免登陆:
+			 		* 点击七天免登陆复选框的时候，把账号和密码存到cookie里面（设置时间）
+			 		* 取cookie值现在在表单上
+			 */
+			window.onload = function() {
+				
+				var username = getid('username');
+				var psw = getid('password');
+				var retain = getid('retain');
+				var btnSubmit = getid('btnSubmit');
+				
+				/*
+					需求：七天免登陆
+						* 点击确认按钮的时候，判断复选框是否选中
+						* 如果选中，存数据到cookie
+						* 取cookie值放回原地
+				*/
+				
+				btnSubmit.onclick = function() {
+					if(retain.checked) {
+						console.log('勾选了复选框');
+						var usn = username.value.trim();
+						var pswval = psw.value.trim();
+						if(usn && pswval) {
+							//不为空，存数据到cookie
+							//设置成七天免登陆：获取当前系统时间，再加上7天
+							var now = new Date();
+							now.setDate(now.getDate() + 7);//未来7天
+							//存cookie
+							cookie.set('name',usn,{expires : now});
+							cookie.set('psw',pswval,{expires : now});
+						}
+					}else{
+						console.log('没勾选了复选框');
+					}
+				}
+				
+				//取cookie
+				var name = cookie.get('name');
+				var psweasy = cookie.get('psw');
+				username.value = name;
+				psw.value = psweasy;
+				console.log(name,psweasy);
+				
+			}
+		</script>
+	</head>
+	<body>
+		<form action="04success.html" method="get">
+			<label>账号</label>
+			<input id="username" name="username" type="text" /><br /><br />
+			<label>密码</label>
+			<input id="password" name="password" type="text" /><br /><br />
+			<label><input type="checkbox"  class="checkbox" id="retain" />
+		7天免登录</label>
+			<br/><br/>
+			<input type="button" value="确定" id="btnSubmit" />
+			<input type="reset" value="清空" />
+		</form>
+	</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>侧边栏广告</title>
+		<style>
+			#box {
+				margin: 30px auto;
+				width: 100px;
+				height: 100px;
+				background: #D8D8D8;
+				/*position:relative;*/
+				position: fixed;
+				/** 最简单的一种是新方法，就是让绝对定位设置成固定，但是IE6不会支持此种特性*/
+				right: 0;
+				bottom: 0;
+				margin-top: -50px;
+				/*background: url(../img/ni.jpg) no-repeat center center;*/
+			}
+			
+			#time {
+				position: absolute;
+				right: 25px;
+				top: 2px;
+				color: #F08080;
+			}
+			
+			img {
+				width: 100px;
+				height: 100px;
+			}
+			
+			#close {
+				position: absolute;
+				right: 2px;
+				top: 4px;
+				cursor: pointer;
+				display: block;
+				width: 15px;
+				height: 15px;
+				background: #D8D8D8;
+				text-align: center;
+				line-height: 14px;
+			}
+		</style>
+
+		<script type="text/javascript">
+			window.onload = function() {
+				//1.获取节点
+				var box = document.getElementById('box');
+				var time = document.getElementById('time');
+				var close = document.getElementById('close');
+				var dd = document.getElementById('dd');
+
+				//2. 10秒后自动关闭
+				//			var tim2=setTimeout(function(){
+				//				box.style.display='none';
+				//				dd.style.display='block';
+				//			},10000);
+
+				//3. 10秒不断刷新
+				var num = 4;
+				var tim = setInterval(function() {
+					time.innerHTML = num + 's';
+					num--;
+					if(num < 0) {
+						clearInterval(tim);
+						box.style.display = 'none';
+						//					dd.style.display = 'block';
+					}
+
+				}, 1000);
+
+				//4.点击关闭
+				close.onclick = function() {
+					box.style.display = 'none';
+					clearInterval(tim);
+					//				clearTimeout(tim2);
+				}
+			}
+		</script>
+
+	</head>
+
+	<body style="height: 2000px;position: relative; ">
+		<div id="box">
+			<img src="../img/ni.jpg" />
+			<span id="time">
+				5s
+			</span>
+			<span id="close">
+				x
+			</span>
+		</div>
+	</body>
+
+</html>

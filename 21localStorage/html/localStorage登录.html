@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = () => {
+				let form = getid('form');
+				let user = getid('user');
+				let pass = getid('pass');
+				let mfun = getid('myfun');
+				let aa = document.querySelectorAll('#aa');
+				let arr = [];
+				let val = '';
+				//				console.log(val);
+				//获取表单的值
+				//					let name=user.value;
+				//					let psw=pass.value;
+				//非空判断
+
+				myfun.onclick = () => {
+					if(user && pass) {
+						//获取两个表单的值，存到本地存储里面
+						let name = user.value;
+						let psw = pass.value;
+						//将内容存入本地
+						let storages = window.localStorage;
+						let names = storages.name;
+						let passwd = storages.psw;
+
+						//								let obj1=strToObj(name);
+						//								let obj2=strToObj(passwd);
+						//								console.log(obj1.name,obj2.psw);
+//						var arr = names.split('&');
+//						var arr2 = passwd.split('&');
+						//判断
+						//						console.log(storages.name1,storages.psw1);
+//						console.log(arr, arr2);
+
+						if(name == names && psw == passwd) { //切割&没做。
+							window.open('欢迎来到首页.html');
+						} else {
+							alert('账号或密码不正确');
+						}
+					} else {
+						alert('请输入内容');
+					}
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<form id="form">
+			用户名：<input type="text" name="user" id="user1" />&nbsp;<span id="aa"></span><br>
+			<br /> 密&nbsp;&nbsp;码：&nbsp;
+			<input type="password" name="pass" id="pass1" />&nbsp;<span id="aa"></span><br>
+			<br />
+			<input type="button" value="登录" id="myfun" />
+		</form>
+	</body>
+
+</html>

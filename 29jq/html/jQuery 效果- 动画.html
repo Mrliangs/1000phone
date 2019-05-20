@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#aaa').click(function(){
+					//$('#aa').animate({'left':350});//单个操作
+					
+//					$('#aa').animate({
+//						'opacity':0.3,
+//						'width':200,
+//						'height':300,
+//						'left':400
+//					});//多个操作。
+
+//					$('#aa').animate({
+//						left:'50px',
+//						height:'+=100px',
+//						width:'+=100px'
+//					
+//					});// 使用相对值
+					//$('#aa').animate({height:'toggle'});//使用预定义的值  可以把属性的动画值设置为 "show"、"hide" 或 "toggle"：
+					
+					//jQuery animate() - 使用队列功能
+//					 var div=$("div");
+//					    div.animate({height:'300px',opacity:'0.4'},"slow");
+//					    div.animate({width:'300px',opacity:'0.8'},"slow");
+//					    div.animate({height:'100px',opacity:'0.4'},"slow");
+//					    div.animate({width:'100px',opacity:'0.8'},"slow");
+
+					//下面的例子把 <div> 元素往右边移动了 100 像素，然后增加文本的字号：
+					var div=$("div");
+						  div.animate({left:'100px',height:'200px'},"slow");
+						  div.animate({fontSize:'3em'},"slow");
+				});
+				
+				
+			});
+		</script>
+	</head>
+	<body>
+		<p id='aas'>默认情况下，所有的 HTML 元素有一个静态的位置，且是不
+			可移动的。 如果需要改变为，我们需要将元素的 position 属性设置为 relative, fixed, 或 abso
+			lute!</p>
+			<button id="aaa">aas</button>
+		<div id="aa" style="width:100px;height:100px;background:red; position: relative;">呵呵呵呵呵</div>
+	</body>
+</html>

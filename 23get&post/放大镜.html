@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			#Bimg {
+				width: 400px;
+				height: 400px;
+				/*overflow: hidden;*/
+				margin-top:20px;
+				margin-left: 17px;
+				position: relative;
+				margin-bottom: 10px;
+				/*float: left;*/
+			}
+			
+			.fimg {
+				width: 400px;
+				height: 400px;
+			}
+			
+			#box #list {
+				margin-left: 100px;
+			}
+			
+			#box #list li {
+				display: inline;
+				width: 50px;
+				height: 50px;
+				float: left;
+				margin-right: 20px;
+				border: 2px solid #ccc;
+			}
+			
+			#box #list li img {
+				max-width: 50px;
+				max-height: 50px;
+			}
+			
+			#box #list li.active {
+				border: 2px solid #FF0000;
+			}
+			
+			#move {
+				background: rgb(208, 205, 205);
+				opacity: 0.4;
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				border: 1px solid rgb(206, 160, 160);
+				left: 0px;
+				top: 0px;
+				display: none;
+			}
+			
+			#bimg {
+				width: 400px;
+				height: 400px;
+				overflow: hidden;
+				position: absolute;
+				top: 0px;
+				left: 500px;
+				display: none;
+				margin-top: 20px;
+			}
+			
+			#bimg .simg {
+				width: 1600px;
+				height: 1600px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#bimg .simg:nth-child(1){
+				z-index: 200;
+			}
+		</style>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				//				var Bimg=getid('Bimg');
+				//				var move=getid('move');
+				//				var bimg=getid('bimg');
+				var fimg = document.getElementsByClassName('fimg')
+				var lis = document.getElementsByTagName('li');
+				for(var i = 0; i < lis.length; i++) {
+					lis[i].index = i;
+					lis[i].onmouseover = function() {
+						for(var i = 0; i < lis.length; i++) {
+							lis[i].className = '';
+							fimg[i].style.display = "none";
+							simg[i].style.display = 'none';
+						}
+						this.className = 'active';
+						fimg[this.index].style.display = "block";
+						simg[this.index].style.display = 'block';
+					}
+					for(var m = 1; m < lis.length; m++) {
+						lis[m].className = '';
+						fimg[m].style.display = 'none';
+//						simg[m].style.display='none';
+					}
+					console.log(fimg[i]);
+				}
+
+				//遮罩
+				var Bimg = getid('Bimg');
+				var move = getid('move');
+				var bimg = getid('bimg');
+				var simg = document.getElementsByClassName('simg');
+
+				Bimg.onmouseover = () => {
+					move.style.display = "block";
+					bimg.style.display = 'block';
+				}
+				Bimg.onmouseleave = () => {
+					move.style.display = "none";
+					bimg.style.display = 'none';
+				}
+
+				Bimg.onmousemove = (ev) => {
+					var ev = window.event || event;
+					var disX=ev.clientX;
+					var disY=ev.clientY;
+					//move的距离
+					var left = disX - Bimg.offsetLeft - (move.offsetWidth / 2);
+					var top = disY - Bimg.offsetTop - (move.offsetHeight / 2);
+					console.log(left,top);
+					if(left <= 0) {
+						left = 0;
+					} else if(left >= Bimg.offsetWidth - move.offsetWidth) {
+						left = Bimg.offsetWidth - move.offsetWidth;
+					}
+
+					if(top <= 0) {
+						top = 0;
+					} else if(top >= Bimg.offsetHeight - move.offsetHeight) {
+						top = Bimg.offsetHeight - move.offsetHeight;
+					}
+
+					move.style.left = left + 'px';
+					move.style.top = top + 'px';
+
+					
+//					console.log(W,H);
+					for(var i = 0; i < simg.length; i++) {
+						var H = top / (Bimg.offsetHeight - move.offsetHeight);
+						var W = left / (Bimg.offsetWidth - move.offsetWidth);
+						var b_top = H * (simg[i].offsetHeight - bimg.offsetHeight);
+						var b_left = W * (simg[i].offsetWidth - bimg.offsetWidth);
+//						console.log(b_top, b_left);
+						simg[i].style.left = -b_left + 'px';
+						simg[i].style.top = -b_top + 'px';
+					}
+//					console.log(move);
+
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="Bimg">
+				<img src="https://i8.mifile.cn/a1/pms_1527735137.92672512.jpg" class="fimg" />
+				<img src="https://i8.mifile.cn/a1/pms_1527735137.81615202.jpg" class="fimg" />
+				<img src="https://i8.mifile.cn/a1/pms_1527735137.81949846.jpg" class="fimg" />
+				<img src="https://i8.mifile.cn/a1/pms_1527735137.80842202.jpg" class="fimg" />
+				<div id="move"></div>
+			</div>
+			<ul id="list">
+				<li class="active"><img src="https://i8.mifile.cn/a1/pms_1527735137.92672512.jpg" /></li>
+				<li><img src="https://i8.mifile.cn/a1/pms_1527735137.81615202.jpg" /></li>
+				<li><img src="https://i8.mifile.cn/a1/pms_1527735137.81949846.jpg" /></li>
+				<li><img src="https://i8.mifile.cn/a1/pms_1527735137.80842202.jpg" /></li>
+			</ul>
+
+		</div>
+
+		<div id="box2">
+			<div id="bimg">
+				<img src="https://i8.mifile.cn/a1/pms_1527735137.92672512.jpg" class="simg" />
+				<img src="https://i8.mifile.cn/a1/pms_1527735137.81615202.jpg" class="simg" />
+				<img src="https://i8.mifile.cn/a1/pms_1527735137.81949846.jpg" class="simg" />
+				<img src="https://i8.mifile.cn/a1/pms_1527735137.80842202.jpg" class="simg" />
+			</div>
+		</div>
+	</body>
+
+</html>

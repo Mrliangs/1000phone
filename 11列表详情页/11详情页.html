@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>详情页</title>
+		<script type="text/javascript">
+			/*
+			 	需求：
+			 		* 获取网址的参数，再进行数据渲染
+			 		
+			*/
+			window.onload = function() {
+				
+//				console.log(location.href);//整个完整的网址
+				var opt = decodeURI(location.search).slice(1);//去掉第一个问号
+//				console.log(opt);//id=001&name=iphone7 plugs&imgurl=img/ip7.jpg&price=5899&sale=5888&color=土豪金
+				
+				//将字符串重新整理变成对象
+				function strToObj(str) {
+					//第一步：以&作为切割点
+					var json = {};//创建一个空的json
+					var arr1 = str.split('&');
+//					console.log(arr1);
+					for(var i = 0; i < arr1.length; i++) {
+						//第二步：以=作为切割点
+						var arr2 = arr1[i].split('=');//[id,001] [name,iphone7 plugs]
+						json[arr2[0]] = arr2[1];//json[键名] = 键值；
+					}
+					
+//					console.log(json);
+					return json;
+				}
+				
+				var good = strToObj(opt);
+				console.log(good);
+				
+				var html = `<img src="${good.imgurl}"/>
+							<p>${good.name}</p>
+							<p>价格:￥${good.price}</p>`;
+					
+				//渲染数据
+				var goodinf = document.getElementById('goodinf');
+				goodinf.innerHTML = html;
+			}
+		</script>
+	</head>
+	<body>
+		<h1>详情页</h1>
+		<div id="goodinf">
+			<!--<img src="img/ip7.jpg"/>
+			<p>iphone7 plugs</p>
+			<p>价格:￥5888</p>-->
+		</div>
+	</body>
+</html>

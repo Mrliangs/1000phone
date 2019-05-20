@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+
+				var use = getid('use');
+				var inf = getid('inf');
+				var psw = getid('psw');
+				var btn = getid('btn');
+				use.onblur = function() {
+
+					var uses = use.value.trim();
+					var psws = psw.value.trim();
+					//1.创建对象
+					var aaa = new XMLHttpRequest();
+					//2.发送请求:get方式，send(null)，
+					aaa.open('GET','api/ch_get.php?username=' + uses, true)
+					aaa.send(null);
+					//4.接收数据，做渲染
+					aaa.onreadystatechange = function() {
+						if(aaa.readyState == 4) {
+							if(aaa.status == 200) {
+								var sss = aaa.responseText;
+								if(sss == '0') {
+									inf.innerHTML = '不能注册';
+								} else {
+									inf.innerHTML = '用户名可以使用';
+								}
+							}
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<form id="reg">
+			用户名：<input type="text" id="use" /><span id="inf"></span><br /> 密码：
+			<input type="text" id="psw" /><br />
+			<input type="button" id="btn" value="注册" />
+		</form>
+	</body>
+
+</html>

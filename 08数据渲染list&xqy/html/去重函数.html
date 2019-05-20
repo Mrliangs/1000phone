@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="text" name="" id="aa" value="" placeholder="请输入数组" />
+		<button onclick="sss()">打印数组</button>
+		<div id="dd">
+
+		</div>
+		<script type="text/javascript">
+			function unTill(array) {
+				var arr2 = [];
+				for(var i = 0; i < array.length; i++) {
+
+					if(arr2.indexOf(array[i]) == -1) {
+						arr2.push(array[i]);
+					}
+
+				}
+				return arr2;
+			}
+			var q = [];
+			function sss(){
+				var aa=document.getElementById('aa').value*1;
+				q.push(aa);
+				q.sort(bb);
+				function bb(a,b){
+					return a-b;
+				}
+				
+			var w=unTill(q); 
+			document.getElementById('dd').innerHTML='原来的数组：'+q+'<br/>'+'去重后的新数组'+w;
+			}
+			//			function sss(){
+			//		var aa=document.getElementById('aa').value*1;
+		</script>
+		<img src="https://i1.mifile.cn/a4/xmad_15441040908677_rBuAF.jpg" alt="" />
+	</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jq侧边栏广告</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				height: 100px;
+				width: 100px;
+				background-color: red;
+				position:/* absolute;*/ fixed ;
+				right: 0px;
+			}
+		</style>
+		<script src="../js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+//				var docScroll = $(document).scrollTop();
+//				$(window).scroll(function() {
+//					
+//					$('#box').css('top', docScroll + 400);
+					
+				$('#box').css('bottom',0);//固定
+//				});
+			});
+		</script>
+	</head>
+
+	<body style="background: #8B4513; height: 2000px;">
+		<div id="box">
+
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var tex = getid('tex');
+				var btn = getid('btn');
+				var liao=getid('liao')
+				btn.onclick = function() {
+					//天气预报的接口
+					var url = 'http://www.tuling123.com/openapi/api?key=094c8a262
+					b4f496f9d16c381fdb6d3b1&info='+'shuru'+'useid=411383';
+//					var data = 'text=' + tex.value;
+					ajax('post',url,'',function(str) {
+						console.log(str);
+						//渲染
+//						var arr = JSON.parse(str);
+//						console.log(arr);
+//						liao.innerHTML=arr;
+					});
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="tex"/>
+		<input type="button" name="btn" id="btn" value="找一找" />
+		<p id="liao"></p>
+	</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			* {
+				margin: 0;
+				padding: 0;
+				text-align: center;
+				box-sizing: border-box;
+			}
+			/*nav{
+				width: 400px;
+				border-top:1px solid red;
+				box-sizing: border-box;
+ 			}*/
+			body{
+				margin:20px auto;
+			}
+			#list{
+				
+				width: 400px;
+				border-top: 1px solid #ccc;
+				padding: 15px;
+				margin: 0 auto;
+				
+			}
+			#list li {
+				display: inline;
+				width: 24%;
+				text-decoration: none;
+				padding: 15px;
+			}
+			
+			 #list .aa{
+				display: inline;
+				/*display: block;*/
+				background-color: lightblue;
+				border-top: 1px solid red;
+				font-weight: 700;
+			}
+			#box{
+				width: 400px;
+				height: 300px;
+				/*overflow: hidden;*/
+				margin: 0 auto;
+			}
+			section {
+				height: 300px;
+				display: none;
+			}
+			
+			section img {
+				width: 400px;
+				height: 300px;
+			}
+		</style>
+		<script src="../js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#list li').click(function(){
+					$(this).attr('class','aa')
+					.siblings()
+					.attr('class','');
+					$('#box #con').eq($(this).index())
+					.css('display','block')
+					.siblings()
+					.css('display','none');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li class="aa">一哈</li>
+			<li>二哈</li>
+			<li>三哈</li>
+			<li>四哈</li>
+			<li>无哈</li>
+		</ul>
+		<div id="box">
+			<section id='con' style="display: block;"><img src="../img/1.jpg" /></section>
+			<section id='con'><img src="../img/2.jpg" /></section>
+			<section id='con'><img src="../img/3.jpg" /></section>
+			<section id='con'><img src="../img/4.jpg" /></section>
+			<section id='con'><img src="../img/5.jpg" /></section>
+		</div>
+	</body>
+</html>

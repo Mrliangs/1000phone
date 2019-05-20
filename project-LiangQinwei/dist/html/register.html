@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>注册 - 聚美账户</title>
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../css/register.css" />
+		<script src="../lib/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/register.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="header-contianer">
+			<div class="logo">
+				<a href="#" class="home" title="聚美优品" style="background: url(../img/register-img/logo_new_v1.jpg) no-repeat top left;"> 化妆品品牌排行榜大全网站聚美优品 </a>
+				<div class="header_logo_box">
+					<a href="#" class="top_link lighting"></a>
+					<a href="#" class="top_link gild"></a>
+					<a href="#" class="top_link credit"></a>
+				</div>
+			</div>
+		</div>
+		<div class="sign">
+			<div class="loginWrap">
+				<div class="loginPic">
+					<a href="#" class="signup_link"></a>
+					<div class="loginBord">
+						<div class="loginTip">
+							<div class="tosignup">
+								已有账号<a href="login.html">在此登录</a>
+							</div>
+							<h1>
+								<strong>用户注册</strong>
+							</h1>
+						</div>
+						<form id="phone" method="post">
+							<div class="line">
+								<div class="textbox_ui">
+									<input type="text" id="mobile" placeholder="手机号" value="" />
+									<div class="focus_text">请输入11位手机号码</div>
+								</div>
+							</div>
+							<div class="line verityWrap">
+								<div class="textbox_ui sms_verify_wrapper">
+									<input type="text" id="verify" placeholder="验证码" style="width: 180px;"/>
+									
+									
+									<canvas width="100" height="40" id="verifyCanvas" style="display: none;"></canvas>
+									<img id="code_img" class="r_imgCaptcha fr">
+									
+									<div class="focus_text">按右图填写，要区分大小写</div>
+									<!--<a href="#" id="getPhoneCode" class="phonecode"> 
+										<strong>获取短信校验码</strong>	
+									</a>-->
+								</div>
+							</div>
+							<div class="line">
+								<div class="textbox_ui">
+									<input type="password" id="password" placeholder="密码" value="" />
+									<div class="focus_text">6-16个字符，建议使用以首字母开头加数字组合</div>
+								</div>
+							</div>
+							<div class="line">
+								<div class="textbox_ui">
+									<input type="password" id="password2" placeholder="重复密码" value="" />
+									<div class="focus_text">请再次输入密码</div>
+								</div>
+							</div>
+							<div class="act" style="margin-left: 0px;">
+								<p>
+									<input type="submit" name="mobileCommit" id="mobileCommit" value="同意协议并注册" class="submit_btn" style="width: 100%;" />
+								</p>
+								<p>
+									<a href="#" style="color: #ED145B;">《聚美优品用户协议》</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="#" style="color: #ED145B;">《聚美隐私权政策》</a>
+								</p>
+							</div>
+							<br />
+						</form>
+						<div class="shadow_l"></div>
+						<div class="shadow_r"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer_container" class="footer_white" style="padding-top: 5px; background: none; border: none;">
+			<div class="footer_con">
+				<p class="footer_copy_con">
+
+					Copyright © 2010-2015 北京创锐文化传媒有限公司 Jumei.com 保留一切权利。客服热线：400-123-8888
+					<br /> 京公网安备 11010102001226 号 |
+					<a href="#">京ICP证111033号</a>
+					| 食品流通许可证 SP1101051110165515（1-1） |
+					<a href="#">营业执照</a>
+
+					|
+					<a href="#">公示制度</a>
+				</p>
+				<p>
+					<a href="#" class="footer_logo logo01"></a>
+					<a href="#" class="footer_logo logo02"></a>
+					<a href="#" class="footer_logo logo03"></a>
+					<a href="#" class="footer_logo logo04"></a>
+					<a href="#" class="footer_logo logo05"></a>
+				</p>
+			</div>
+		</div>
+		<div id="tanc">
+			<div class="pro_title">协议订立须知</div>
+			<div class="pro_content">
+				<p>
+					<b>在您注册成为聚美用户的过程中，您需要完成我们的注册流程并通过点击同意的形式签署《聚美优品用户协议》、《聚美隐私权政策》</b>。
+				</p>
+				<p>
+					<b>
+						★
+                    	<text class="double-lines">审慎阅读</text>
+					</b>
+					您在申请用户注册流程中点击同意并接受协议之前，应当认真阅读《聚美优品用户协议》和《聚美隐私权政策》（“协议”）。
+					<b>
+						<text class="one-line">
+                        请您务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款、法律适用和争议解决条款，并确定了解我们对您个人信息的处理规则。您有权选择同意或者不同意协议。
+                    </text>
+					</b>
+					如您对协议有任何疑问，可向聚美客服咨询。
+            
+				</p>
+				<p>
+					<b>
+						★
+                    <text class="double-lines">签约动作</text>
+					</b>
+					当您按照注册页面提示填写信息、
+					<b>
+						<text class="one-line">点击“同意协议并注册”且完成全部注册程序后，</text>
+					</b>
+					即表示您已充分阅读、理解并接受协议的全部内容，您同意聚美可以依据隐私政策内容来处理您的个人信息，同时也表明您与聚美达成一致，成为聚美“用户”。
+            
+				</p>
+				<p class="one-line">
+					<b>阅读协议过程中，如您不同意相关协议或其中任何条款约定，应立即停止注册程序或停止使用聚美平台服务。 </b>
+				</p>
+			</div>
+			<div id="tanc2">确定</div>
+			
+		</div>
+		<div id="lll"></div>
+	</body>
+
+</html>

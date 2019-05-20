@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			//es3
+			var sun = function(a, b) {
+				return function(c) {
+					return a * b + c;
+				}
+			}
+			//es6
+			var sun = (a, b) => c => a * b + c;
+			console.log(sun());
+
+			//es3
+						var sum=(a,b)=>c=>d=>({name:'lemon'});
+
+			//es6
+			var sum = function(a, b) {
+				return function(c) {
+					return function(d) {
+						return {
+							name: 'lemon';
+						};
+					}
+				}
+			}
+			console.log(sum());
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

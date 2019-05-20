@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				position: relative;
+				width: 100%;
+				height: 1300px;
+			}
+			#lll{
+				width: 100%;
+				height: 100%;
+				background: #ccc;
+				position: absolute;
+				/*position: fixed;*/
+				/*top: 0;*/
+				/*left: 0;*/
+				z-index: 1;
+			}
+			#box{
+				
+				width: 500px;
+				height: 500px;
+				/*margin: 100px auto;*/
+				background: red;
+				/*position: absolute;*/
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				margin-left: -250px;
+				margin-top: -250px;
+				z-index: 999999999999999;
+			}
+			#box2{
+				position: absolute;
+				left: 18px;
+				bottom: 0;
+				cursor: pointer;
+				color: #fff;
+				font-size: 12px;
+				width: 66px;
+				height: 30px;
+				background: #000000;
+				line-height: 30px;
+				text-align: center;
+				
+			}
+		</style>
+	</head>
+	<script src="../../jq案例/js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#box2').on('click',function(){
+				$('#box').css('display','none');
+				$('#lll').css('display','none');
+			})
+		});
+	</script>
+	<body>
+		<div id="box">
+			<div id="box2">确定</div>
+			
+		</div>
+		<div id="lll"></div>
+	</body>
+</html>

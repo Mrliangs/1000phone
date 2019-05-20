@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标按键</title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #ccc;
+			}
+		</style>
+		<script type="text/javascript">
+			document.onmousemove = function(ev) {
+				//ev对象的兼容问题: 低版本浏览器 window.event  高级浏览器：event
+//				var ev = window.event || event || ev;//兼容处理
+				
+				//需求：检测鼠标按键
+				var box = document.getElementById('box');
+				
+				box.onmousedown = function(ev) {
+					if(ev.button == 0) {
+						//左键按下
+						box.innerHTML = '发射子弹';
+					}else if(ev.button == 1) {
+						//滚轮按下
+						box.innerHTML = '切换武器';
+					}else if(ev.button == 2){
+						//右键
+						box.innerHTML = '看放大镜';
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+	</body>
+</html>

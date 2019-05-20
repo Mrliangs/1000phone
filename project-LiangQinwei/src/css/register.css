@@ -1,0 +1,311 @@
+body {
+  font-size: 12px;
+  position: relative;
+}
+
+a {
+  color: #ed145b;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#header-contianer {
+  min-width: 960px;
+  background: #FFFFFF;
+}
+#header-contianer .logo {
+  height: 85px;
+  width: 960px;
+  margin: 0 auto;
+}
+#header-contianer .logo .home {
+  width: 360px;
+  height: 85px;
+  overflow: hidden;
+  float: left;
+  font-size: 0;
+  line-height: 0;
+}
+#header-contianer .logo .header_logo_box {
+  display: inline-block;
+  padding-top: 35px;
+  float: right;
+}
+#header-contianer .logo .header_logo_box .top_link {
+  width: 110px;
+  height: 31px;
+  overflow: hidden;
+  margin-right: 24px;
+  float: right;
+  background: url(../img/register-img/header_corn_new_v2.png) no-repeat top center transparent;
+}
+#header-contianer .logo .header_logo_box .lighting {
+  background-position: 0 -64px;
+}
+#header-contianer .logo .header_logo_box .gild {
+  background-image: url(../img/register-img/gild.png);
+  width: 170px;
+}
+#header-contianer .logo .header_logo_box .credit {
+  background-position: 0 0;
+}
+
+.sign {
+  line-height: 1.5;
+}
+.sign .loginWrap {
+  margin-top: 120px;
+  margin-bottom: 70px;
+  height: 460px;
+  margin: 100px auto;
+  line-height: 1.5;
+  width: 965px;
+}
+.sign .loginWrap .loginPic {
+  background: url(../img/register-img/signpic.jpg) no-repeat;
+  width: 960px;
+  height: 370px;
+  position: relative;
+}
+.sign .loginWrap .loginPic .signup_link {
+  display: block;
+  position: absolute;
+  width: 420px;
+  height: 370px;
+}
+.sign .loginWrap .loginPic .loginBord {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.075);
+  background: rgba(255, 255, 255, 0.85);
+  position: absolute;
+  min-height: 400px;
+  padding: 0 23px;
+  width: 310px;
+  color: #333;
+  top: -60px;
+  right: 0;
+  border: 0;
+}
+.sign .loginWrap .loginPic .loginBord .loginTip {
+  margin-bottom: 15px;
+  line-height: 60px;
+}
+.sign .loginWrap .loginPic .loginBord .loginTip .tosignup {
+  color: #969696;
+  float: right;
+}
+.sign .loginWrap .loginPic .loginBord .loginTip h1 {
+  font-size: 20px;
+  color: #e31256;
+  font-weight: 400;
+}
+.sign .loginWrap .loginPic .loginBord .line {
+  height: 44px;
+  margin: 0;
+  margin-bottom: 28px;
+  font-size: 12px;
+  clear: both;
+  color: #333;
+}
+.sign .loginWrap .loginPic .loginBord .line .textbox_ui {
+  margin-bottom: 0;
+  vertical-align: middle;
+  position: relative;
+}
+.sign .loginWrap .loginPic .loginBord .line .textbox_ui input {
+  box-shadow: none;
+  border: 1px solid #CFCFCF;
+  background-color: #fff;
+  vertical-align: middle;
+  padding: 10px 8px;
+  line-height: 1.5;
+  font-size: 14px;
+  outline: 0;
+  height: auto;
+  width: 284px;
+}
+.sign .loginWrap .loginPic .loginBord .line .textbox_ui .focus_text {
+  word-break: keep-all;
+  white-space: nowrap;
+  margin-top: 4px;
+  color: #999;
+  top: 100%;
+  left: 0;
+  position: absolute;
+  line-height: 1.5;
+  display: none;
+}
+.sign .loginWrap .loginPic .loginBord .verityWrap .textbox_ui {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+.sign .loginWrap .loginPic .loginBord .verityWrap .textbox_ui input {
+  width: 138px;
+  margin-right: 12px;
+}
+.sign .loginWrap .loginPic .loginBord .verityWrap img {
+  height: 43px;
+  width: 86px;
+  border: 1px solid #CFCFCF;
+  margin-right: 12px;
+}
+.sign .act {
+  margin: 0;
+  margin-bottom: 28px;
+  font-size: 12px;
+  clear: both;
+  color: #333;
+}
+.sign .act p {
+  margin: 10px 0;
+}
+.sign .act p .submit_btn {
+  border: 1px solid #F9477A;
+  background: #F8296D;
+  text-align: center;
+  line-height: 40px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  height: 40px;
+  color: #fff;
+}
+.sign .shadow_l {
+  background: url(../img/register-img/shadow.png) no-repeat center;
+  position: absolute;
+  height: 100%;
+  width: 8px;
+  top: 0;
+  left: -9px;
+}
+.sign .shadow_r {
+  background: url(../img/register-img/shadow.png) no-repeat center;
+  position: absolute;
+  height: 100%;
+  width: 8px;
+  top: 0;
+  transform: scaleX(-1);
+  right: -9px;
+}
+
+#footer_container {
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  bottom: -1px;
+}
+#footer_container .footer_con {
+  background: #fff;
+  color: #000;
+  text-align: center;
+  line-height: 20px;
+  padding-bottom: 80px;
+  width: 1090px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#footer_container .footer_con .footer_copy_con {
+  padding: 14px 0 18px;
+  line-height: 23px;
+}
+#footer_container .footer_con .footer_copy_con a {
+  color: #000000;
+}
+#footer_container .footer_con .footer_logo {
+  width: 126px;
+  height: 50px;
+  overflow: hidden;
+  display: inline-block;
+  margin: 0 0 4px 8px;
+  border-bottom: 1px solid #d7d7d7;
+  background: url(../img/register-img/footer_btm_icon.png) no-repeat;
+}
+#footer_container .footer_con .logo02 {
+  background-position: -126px 0;
+}
+#footer_container .footer_con .logo03 {
+  background-position: -252px 0;
+}
+#footer_container .footer_con .logo04 {
+  background-position: -378px 0;
+}
+#footer_container .footer_con .logo05 {
+  background-position: -504px 0;
+}
+
+#lll {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#tanc {
+  font-size: 20px;
+  padding-top: 20px;
+  width: 600px;
+  height: 500px;
+  border-radius: 10px;
+  /*margin: 100px auto;*/
+  background: #FFFFFF;
+  /*position: absolute;*/
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: -250px;
+  z-index: 999999999999999;
+}
+#tanc .pro_title {
+  text-align: center;
+  color: #111;
+  font-weight: 500;
+}
+#tanc .pro_content {
+  text-align: justify;
+  padding: 20px 30px 0;
+}
+#tanc .pro_content p {
+  line-height: 24px;
+  font-size: 14px;
+  color: #555;
+}
+#tanc .pro_content p b {
+  color: #111;
+}
+#tanc .pro_content .double-lines {
+  text-decoration: underline;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #000;
+  margin-left: 5px;
+}
+#tanc .pro_content .one-line {
+  padding-bottom: 2px;
+  text-decoration: underline;
+}
+#tanc #tanc2 {
+  line-height: 45px;
+  text-align: center;
+  width: 240px;
+  height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  border-radius: 4px;
+  background: #fe4070;
+  display: block;
+  border: 0;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 20px;
+  padding-left: 20px;
+  padding-right: 0;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=register.css.map */

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#{margin: 0;
+			padding: 0;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				/*
+				 	拖拽：
+				 		* 按下的时候计算相对距离
+				 		* 鼠标移动的过程不断计算新的left和top
+				 		* 鼠标抬起的时候，停止运动
+				 */
+				
+				var box=document.getElementById('box');
+				
+				box.onmousedown=function(ev){
+					//1.相对偏移量
+					var disY=ev.clientY-box.offsetTop;
+					var disX=ev.clientX-box.offsetLeft;
+					
+					//计算不断新的top和left
+					document.onmousemove=function(ev){
+						var top=ev.clientY-disY;
+						var left=ev.clientX-disX;
+						
+						//临界值的判断
+						var aa=window.innerHeight-box.offsetHeight;
+						if(top<=0){
+							top<=0;
+							
+						}else if(top>=aa){
+							top>=aa;
+						}
+						box.style.top=top+'px';
+						box.style.left=left+'px';
+					}
+					document.onmouseup=function(){
+						document.onmousemove=null;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>

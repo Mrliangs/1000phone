@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>编写生成4位数字验证码的函数，并显示在页面，点击重新生成验证码</title>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			//编写生成4位数字和字母组合的验证码的函数，并显示在页面，点击重新生成验证码
+			/*
+			 	真正写需求的时候：联想知识点(做项目的时候)
+			 	真正是手机验证码：是需要用到真实的数据接口，接口需要付费；
+			 	
+			 	需求：制作一个假的验证码，模拟手机验证码登陆功能
+			 		* 生成一个四位数的随机验证码：数字和大小字母组合
+			 		* 把验证码显示到按钮里面，点击一次就切换一次随机数
+			 		* 输入验证码和随机数匹配，才可以成功提交
+			*/
+			
+//			var str = '0123456789zxcvbnmasdfghjklpoiuytrewqZXCVBNMLKJHGFDSAQWERTYUIOP';//0-9
+//			console.log(str.length);//长度
+//			console.log(str[2]);//只要我可以随机获取到下标，就可以随机获取到对应数字
+//			var num1 = parseInt(Math.random() * str.length);
+//			var num2 = parseInt(Math.random() * str.length);
+//			var num3 = parseInt(Math.random() * str.length);
+//			var num4 = parseInt(Math.random() * str.length);
+//			console.log(str[num1]);//随机获取对应下标
+//			console.log(str[num2]);
+//			console.log(str[num3]);
+//			console.log(str[num4]);	
+			window.onload = function() {
+				//找节点
+				var tex = document.getElementById('tex');
+				var rannum = document.getElementById('rannum');
+				var smbtn = document.getElementById('smbtn');
+				
+				//1.生成一个四位数的随机验证码：数字和大小字母组合
+				var num = ranNum();
+				console.log(num);
+				
+				//2.把验证码显示到按钮里面，点击一次就切换一次随机数
+				rannum.value = num;//设置内容
+				
+				rannum.onclick = function() {
+					rannum.value = ranNum();//点击一次，换一个随机验证码
+				}
+				
+				//3.输入验证码和随机数匹配，才可以成功提交
+				smbtn.onclick = function() {
+					//.toLowerCase() 将字符串转成小写
+					//忽略大小写：统一转成大写或小写再比较
+					var _tex = tex.value.toLowerCase();
+					var _rannum = rannum.value.toLowerCase();
+					if(_tex == _rannum) {
+						//可以提交
+						alert('成功提交');
+					}else{
+						alert('验证码错误');
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" name="tex" id="tex" value="" />
+		<input type="button" name="rannum" id="rannum" value="4545" />
+		<input type="button" name="smbtn" id="smbtn" value="提交" />
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//es6
+			var sun = (a, b) => c => a * b + c;
+
+			//es3
+			function sun(a, b) {
+				return function(c) {
+					return a * b + c;
+				}
+			}
+
+			console.log(sun());
+
+			//es3
+			var sum = (a, b) => c => d => ({
+				name: 'lemon'
+			});
+
+			//es6
+			function sum(a, b) {
+				return function(c) {
+					return function(d) {
+						return {
+							name: 'lemon';
+						};
+					}
+				}
+			}
+			console.log(sum());
+
+			//var sum = (a, b) => c => d => {name: 'lemon'};
+			//function sum(a, b) {
+			//				return function(c) {
+			//					return function(d) {
+			//						return function(){
+			//							return name:'lemon';
+			//					}
+			//				}
+			//			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

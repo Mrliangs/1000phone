@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>动态创建表格</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				padding: 50px;
+			}
+			
+			#tb {
+				/*细线边框*/
+				border-collapse: collapse;
+				margin-top: 50px;
+			}
+			
+			#tb td {
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
+				border: 1px solid #d8d8d8;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				/*
+				 	需求：
+				 		*　点击的时候，获取行数和列数
+				 		* 根据数量创建表格
+				 */
+
+				var tex1 = document.getElementById('tex1');
+				var tex2 = document.getElementById('tex2');
+				var btn = document.getElementById('btn');
+				var tb = document.getElementById('tb');
+				var tbodys = tb.tBodies[0];//父节点
+
+				btn.onclick = function() {
+					var rows = tex1.value.trim();
+					var cels = tex2.value.trim();
+					if(rows && cels) {
+						//非空:创建表格
+						//外循环：创建行
+						var html = '';
+						for(var i = 0; i < rows; i++) {
+//							<tr>
+//							for <td></td><td></td><td></td>
+//							</tr>  
+							html += '<tr>';
+							for(var j = 0; j < cels; j++) {
+								html += `<td>${i+1}*${j+1}</td>`;
+							}
+							html += '</tr>';
+						}
+						
+						console.log(html);
+						tbodys.innerHTML = html;
+					} else {
+						alert('表格行列不能为空');
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		行数: <input type="text" id="tex1" /> 列数：
+		<input type="text" id="tex2" />
+		<input type="button" id="btn" value="创建" />
+		<table id="tb" 　 border="" cellspacing="0" cellpadding="0">
+			<tbody>
+				<!--<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+				</tr>-->
+			</tbody>
+		</table>
+	</body>
+
+</html>

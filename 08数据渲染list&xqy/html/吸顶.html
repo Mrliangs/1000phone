@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+         padding: 0;
+         margin: 0;
+         box-sizing: border-box;   
+        }
+        body{
+            height: 1000px;
+        }
+        #aa{
+            width: 100%;
+            height: 100px;
+            background: green;
+        }
+        #bb{
+            width: 100%;
+            height: 100px;
+            background: red;
+        }
+        .now{
+            position:fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var bb=document.getElementById('bb');
+            var top=bb.offsetTop;
+            window.onscroll=function(){
+                var scrollTop=scrollY;
+                if(scrollTop>=top){
+                    bb.className='now';
+                }else{
+                    bb.className='';
+                }
+            }
+        }
+    
+    </script>
+</head>
+<body>
+    <div id="aa">头部</div>
+    <div id="bb">menu</div>
+</body>
+</html>

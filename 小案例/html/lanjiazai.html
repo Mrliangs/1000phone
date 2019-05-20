@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background: #000000;
+			}
+			
+			#more {
+				width: 700px;
+				height: 30px;
+				background: sandybrown;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+				margin: 0 auto;
+				/*display: none;*/
+			}
+		</style>
+		<script src="../js/common.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				/*
+				 	需求：懒加载
+				 		* 渲染部分数据到页面
+				 		* 点击加载更多的时候：渲染新的内容
+				 		* 还没有学习数据库，重新渲染的数据还是假数据
+				 */
+				var aa = getid('aa');
+				var imgs = aa.children;
+				var more = getid('more');
+				var list = [{
+						a1: '../img/1.jpg'
+					},
+					{
+						a1: '../img/2.jpg'
+					},
+					{
+						a1: '../img/3.jpg'
+					},
+					{
+						a1: '../img/4.jpg'
+					},
+					{
+						a1: '../img/5.jpg'
+					},
+					{
+						a1: '../img/6.jpg'
+					},
+					{
+						a1: '../img/7.jpg'
+					},
+					{
+						a1: '../img/8.jpg'
+					},
+					{
+						a1: '../img/9.jpg'
+					},
+					{
+						a1: '../img/10.jpg'
+					},
+					{
+						a1: '../img/11.jpg'
+					},
+					{
+						a1: '../img/12.jpg'
+					},
+					{
+						a1: '../img/13.jpg'
+					},
+					{
+						a1: '../img/14.jpg'
+					},
+					{
+						a1: '../img/15.jpg'
+					},
+					{
+						a1: '../img/16.jpg'
+					},
+					{
+						a1: '../img/17.jpg'
+					},
+					{
+						a1: '../img/18.jpg'
+					},
+					{
+						a1: '../img/19.jpg'
+					},
+					{
+						a1: '../img/20.jpg'
+					},
+					{
+						a1: '../img/21.jpg'
+					},
+					{
+						a1: '../img/22.jpg'
+					},
+					{
+						a1: '../img/23.jpg'
+					},
+					{
+						a1: '../img/24.jpg'
+					},
+					{
+						a1: '../img/25.jpg'
+					},
+					{
+						a1: '../img/26.jpg'
+					},
+					{
+						a1: '../img/27.jpg'
+					},
+					{
+						a1: '../img/28.jpg'
+					},
+					{
+						a1: '../img/29.jpg'
+					},
+					{
+						a1: '../img/30.jpg'
+					}
+				];
+
+				var res = list.map(function(bb) {
+					return `<img src="${bb.a1}" width="400" height="200"/>`
+				}).join('');
+
+				aa.innerHTML = res;
+
+				if(imgs.length) {
+					css(more, 'display', 'block');
+				}
+
+				more.onclick = function() {
+					css(more, 'display', 'none');
+
+					setTimeout(function() {
+						css(more, 'display', 'block');
+						aa.innerHTML += aa.innerHTML;
+					}, 1000)
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="aa">
+
+		</div>
+		<p id="more">加载更多</p>
+	</body>
+
+</html>

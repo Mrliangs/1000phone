@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			#box {
+				width: 430px;
+				height: 430px;
+				margin: 100px;
+				margin-left: 17%;
+				position: relative;
+				/*这里使用相对定位，好让其他的元素能依靠这个元素定位*/
+			}
+			/* move鼠标移动的版块 */
+			
+			#move {
+				/* background-image:url(http://a.hiphotos.baidu.com/zhidao/pic/item/1c950a7b02087bf41aec729af1d3572c11dfcf44.jpg); */
+				background: rgb(208, 205, 205);
+				opacity: 0.4;
+				width:220px;
+				height:220px;
+				position: absolute;
+				border: 1px solid rgb(206, 160, 160);
+				left: 0px;
+				top: 0px;
+				display: none;
+				/*先让他隐藏，用js使其显示*/
+			}
+			
+			.img {
+				width: 430px;
+				height: 430px;
+			}
+			
+			#bimg {
+				width: 430px;
+				height: 430px;
+				overflow: hidden;
+				position: absolute;
+				top: 0px;
+				left: 450px;
+				display: none;
+				/*先让他隐藏，用js使其显示*/
+			}
+			
+			#bimg img {
+				width: 800px;
+				height: 800px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+		</style>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = () => {
+				//1、 获取节点
+				var box = document.getElementById("box"); //原图大盒子
+				var move = document.getElementById("move"); //鼠标在原图移动时遮罩
+				var bimg = document.getElementById("bimg"); //放大镜图片盒子
+				var b_bimg = document.getElementById("b_bimg"); //滑动时左侧放大镜图片
+
+				//2.鼠标移入进行显示遮罩和放大镜
+
+				box.onmouseover = () => {
+					move.style.display = "block";
+					bimg.style.display = "block";
+				}
+				//3.鼠标移除隐藏遮罩和放大镜
+				box.onmouseleave = () => {
+					move.style.display = "none";
+					bimg.style.display = "none";
+				}
+				//4.事件 抚摸
+				box.onmousemove = (ev) => {
+					var ev = window.event || event;
+					//获取鼠标 的相对偏移量
+					var disX = ev.clientX;
+					var disY = ev.clientY;
+					//获取box的距离
+					var l = box.offsetLeft;
+					var t = box.offsetTop;
+					//move的距离
+					var left = disX - l - move.offsetWidth / 2;
+					var top = disY - t - move.offsetHeight / 2;
+					//临界值
+					//left
+					if(left <= 0) {
+						left = 0;
+					} else if(left >= box.offsetWidth - move.offsetWidth) {
+						left = box.offsetWidth - move.offsetWidth;
+					}
+					//top
+					if(top <= 0) {
+						top = 0;
+					} else if(top >= box.offsetHeight - move.offsetHeight) {
+						top = box.offsetHeight - move.offsetHeight;
+					}
+					//设置move的top和left
+					move.style.left = left + 'px';
+					move.style.top = top + 'px';
+					//算比例
+					var H=top/(box.offsetHeight - move.offsetHeight);
+					var W=left/(box.offsetWidth - move.offsetWidth);
+					
+					var b_top=H*(b_bimg.offsetHeight-bimg.offsetHeight);
+					var b_left=W*(b_bimg.offsetWidth-bimg.offsetWidth);
+					
+					b_bimg.style.left=-b_left+'px';
+					b_bimg.style.top=-b_top+'px';
+				}
+			}
+		</script>
+
+	</head>
+
+	<body>
+		<div id="box">
+			<!-- 原图 -->
+			<img class="img" src="http://wenda.sfhxdfgl.com/wenda2/images/d9c8338ba50a11f4ba267045028c7690.jpg" alt="#">
+			<!--move 鼠标移动时的背景 遮罩 -->
+			<div id="move"></div>
+
+			<div id="bimg">
+				<!-- 放大镜图片 -->
+				<img id="b_bimg" src="http://wenda.sfhxdfgl.com/wenda2/images/d9c8338ba50a11f4ba267045028c7690.jpg" alt="#">
+			</div>
+		</div>
+	</body>
+	</body>
+
+</html>

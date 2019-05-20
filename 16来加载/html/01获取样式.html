@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.oo {
+				width: 300px;
+				height: 300px;
+				margin: 30px auto;
+				/*background: #58BC58;*/
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var o = document.getElementById('ooo'); //节点
+				o.style.backgroundColor = 'red'; //设置样式颜色
+
+				console.log(o.style.height); //200px
+				console.log(o.style.backgroundColor); //获取样式颜色
+				/*
+				 	获取样式：行内和非行内
+				 		* 节点名.currentStyle(样式名)
+				 		* getComputedStyle(节点名, false)[样式名]  ：false不管伪元素的样式
+				 */
+				console.log(getComputedStyle(o, false).width); //300px
+				console.log(getComputedStyle(o, false).height); //200px
+
+				//获取样式的封装函数
+				function getstyle(obj, attr) {
+					if(getComputedStyle(obj, false)) {
+						//高级浏览起
+						return getComputedStyle(obj, false)[attr];
+					} else {
+						//低版本IE6-9
+						return obj.currentStyle[attr];
+					}
+				}
+
+				var oW = getstyle(o, 'width');
+				console.log('宽度：' + oW); //300px
+
+				//设置：对象名/属性/属性值
+				//获取：对象名/属性
+
+				function css() {
+					var obj = arguments[0];
+					var attr = arguments[1];
+					var value = arguments[2];
+					if(arguments.length == 2) {
+						if(getComputedStyle(obj, false)) {
+							//高级浏览起
+							return getComputedStyle(obj, false)[attr];
+						} else {
+							//低版本IE6-9
+							return obj.currentStyle[attr];
+						}
+					}else if(arguments.length==3){
+						obj.style[attr]=value;
+						
+					}
+				}
+				css(o,'background','green');
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="ooo" class="oo" style="height: 200px;">
+
+		</div>
+	</body>
+
+</html>

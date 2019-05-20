@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#aa,
+			#bb {
+				padding: 5px;
+				text-align: center;
+				background-color: #e5eecc;
+				border: solid 1px #c3c3c3;
+			}
+			
+			#bb {
+				padding: 50px;
+				display: none;
+			}
+		</style>
+		<script src="../js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#aa').click(function(){
+					//$('#bb').slideDown(1000);//jQuery slideDown() 方法用于向下滑动元素。//display: none;
+					
+					//$('#bb').slideUp(1000);//jQuery slideUp() 方法用于向上滑动元素。// /*display: none;*/
+					
+					$('#bb').slideToggle(1000);//jQuery slideToggle() 方法可以在 slideDown() 与 slideUp() 方法之间进行切换。
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="aa">点我滑溜溜</div>
+		<div id="bb">哈哈哈</div>
+	</body>
+
+</html>
